@@ -9,10 +9,12 @@ async function getData(...args) {
     const data = await response.json();
     let result = data['data'];
     for (const arg of args) {
-        result = await result[arg];
-        if (result === undefined) { throw new Error('Invalid argument'); }
+        if (result[arg] === undefined) {
+            throw new Error(`Invalid argument: ${arg}`);
+        }
+        result = result[arg];
     }
-    return await result;
+    return result;
 }
 
 // SREENS CONTENTS
