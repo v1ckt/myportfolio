@@ -1,3 +1,4 @@
+document.querySelector('.mainStyleSheet').href = 'styles/stable.css';
 // AUDIO CONTROLLERS
 const noiseaudio = document.querySelector('.noisesound');
 const changepagesound = document.querySelector('.pagechangesound');
@@ -124,7 +125,6 @@ async function easterEgg() {
     } else {
         document.querySelector('#notifier').classList.add('hidden');
     }
-
 }
 
 age();
