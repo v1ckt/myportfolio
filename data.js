@@ -5,7 +5,7 @@ const contacts = document.querySelector('#Contacts');
 
 // JSON
 async function getData(...args) {
-    const response = await fetch('/data.json');
+    const response = await fetch('data.json');
     const data = await response.json();
     let result = data['data'];
     for (const arg of args) {
