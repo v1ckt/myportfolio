@@ -1,0 +1,66 @@
+{
+    "data": {
+            "aboutMe": {
+                "pagetitle" : "About Me",
+                "pagecontent": {
+                        "name": "Vicktor Teixeira",
+                        "education": "Bachelor's Degree in Computer Science",
+                        "title": "Web Developer",
+                        "texttitle": "Know More About Me",
+                        "pic": "/media/images/corrupted.png",
+                        "location": "Barra do Corda, Maranhão, Brazil",
+                        "presentation": "Hello, my name is Vicktor Teixeira and I'm a Web Developer.<br>I recently earned my bachelor's degree in Computer Science, which has equipped me with a strong understanding of coding and software engineering.<br><br>I am passionate about User Interface/User Experience (UI/UX) Design, particularly with creative layouts, and I also enjoy Graphic Design.<br><br>If you're looking for me, you'll probably find me admiring beautiful designs."
+                    }
+            },
+            "skills":{
+                "pagetitle" : "My Skills",
+                "pagecontent":
+                    {
+                        "presentation": "Here you can see some of the skills I have acquired throughout my career. I am always looking to learn new technologies and improve my skills.",
+                        "presentation2": "If you have any questions or would like to know more about my skills, feel free to contact me.",
+                        "languages": ["HTML", "CSS", "JavaScript", "Python", "Dart"],
+                        "frameworks": ["Flutter", "Django"],
+                        "tools": ["GitHub", "VS Code", "Figma","Adobe Photoshop", "Adobe Illustrator", "Canva"],
+                        "field": "Web Development",
+                        "passion": "UI/UX Design",
+                        "hobbie": "Graphic Design"
+                    }
+            },
+            "projects": {
+                "pagetitle" : "Projects",
+                "pagecontent": 
+                    {
+                        "title": "Featured Projects",
+                        "presentation": "Here you can see some of the projects I have worked on. They're simple but they show my skills and my passion for Web Development and UI/UX Design.",
+                        "items": [
+                        {
+                            "name": "Boate Azul",
+                            "description": "A simple website for a fictional nightclub.",
+                            "technologies": ["PHP", "Laravel"],
+                            "link": "https://github.com/v1ckt/BoateAzul" 
+                        },
+                        {
+                            "name": "Theme UI",
+                            "description": "A website where the color scheme are defined by the predominant color of an image.",
+                            "technologies": ["HTML", "CSS", "JavaScript"],
+                            "link": "https://github.com/v1ckt/Theme-UI"
+                        },
+                        {
+                            "name": "III Computer Science Week",
+                            "description": "A website for the III Computer Science Week of the Federal Institute of Maranhão, Campus Caxias.",
+                            "technologies": ["HTML", "CSS", "JavaScript"],
+                            "link": "https://github.com/v1ckt/ComputerSienceWeek"
+                        },
+                        {
+                            "name": "RoundHost",
+                            "description": "A login page for a fictional hosting company.",
+                            "technologies": ["HTML", "CSS", "JavaScript"],
+                            "link": "https://github.com/v1ckt/Round-Host"
+                        }
+                        ]
+                    }
+                
+            }
+        }
+    
+}

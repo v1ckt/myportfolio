@@ -1,0 +1,309 @@
+:root {
+    --white: #ffffff;
+    --red: #ff4444;
+}
+
+/* Keyframes */
+@keyframes noiseanim {
+
+    0%,
+    3%,
+    14%,
+    27%,
+    32%,
+    47%,
+    52%,
+    61%,
+    74%,
+    81%,
+    97% {
+        backdrop-filter: brightness(95%) contrast(100%);
+        filter: invert(0%);
+        background-size: 200%;
+        transform: translate(0, 0) scale(1) scaleX(-4) skew(0deg);
+        opacity: .6;
+        width: 150%;
+        height: 150%;
+    }
+
+    2%,
+    7%,
+    19%,
+    28%,
+    40%,
+    49%,
+    57%,
+    68%,
+    76%,
+    89%,
+    100% {
+        backdrop-filter: brightness(100%) contrast(95%);
+        background-size: 50%;
+        filter: invert(10%);
+        transform: translate(-2px, 2px) scale(1.02) scaleX(-6)b skew(-1deg);
+        opacity: 0.8;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@keyframes moving {
+
+    2%,
+    64% {
+        transform: translate(2px, 2px);
+    }
+
+    4%,
+    60% {
+        transform: translate(-2px, 2px);
+    }
+
+    62%,
+    72% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes glitch {
+
+    0%,
+    11%,
+    22%,
+    33%,
+    44%,
+    55%,
+    66%,
+    77%,
+    88%,
+    100% {
+        box-shadow: 0 0 0.75rem var(--white),
+            0 0 0.5rem var(--white),
+            0 0 0.75rem var(--white) inset;
+    }
+
+    10%,
+    21%,
+    32%,
+    43%,
+    54%,
+    65%,
+    76%,
+    87%,
+    99% {
+        box-shadow: none;
+    }
+}
+
+@keyframes glitch_text {
+
+    0%,
+    11%,
+    22%,
+    33%,
+    44%,
+    55%,
+    66%,
+    77%,
+    88%,
+    100% {
+        text-shadow: 0 0 30px var(--white), 0 0 10px var(--white);
+        font-weight: 900;
+        filter: drop-shadow(0 0 0.75rem var(--white)) invert(0%);
+    }
+
+    10%,
+    21%,
+    32%,
+    43%,
+    54%,
+    65%,
+    76%,
+    87%,
+    99% {
+        font-weight: 100;
+        text-shadow: none;
+        filter: drop-shadow(0, 0, 0, 0);
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Body Styles */
+body {
+    font-family: 'Courier', monospace;
+    background-color: #333;
+    color: var(--white);
+    line-height: 1.6;
+}
+
+/* Button Styles */
+button {
+    background-color: transparent;
+    border: 2px solid var(--white);
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 1.52rem;
+}
+
+header {
+    display: none;
+}
+
+/* List Styles */
+ul li {
+    margin: 1rem 0;
+    cursor: pointer;
+
+    p {
+        font-size: 1.2rem;
+
+        &:hover {
+            font-size: 1.4rem;
+
+            &::before {
+                content: '> ';
+            }
+        }
+    }
+}
+
+/* Home Page Styles */
+#homePage.active {
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2rem;
+    padding: 2rem 5rem;
+}
+
+/* About Me Page Styles */
+#aboutMe.active,
+#Skills.active,
+#Projects.active,
+#Contacts.active {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    justify-content: center;
+    padding: 2rem 4rem;
+    gap: .5rem;
+
+    >.back {
+        cursor: pointer;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: .5rem;
+        border: 1px solid var(--white);
+    }
+}
+
+#aboutMe.active {
+    .content {
+        .pcontent {
+            display: flex;
+        }
+        p:not(.pcontent), h1 {
+            display: none;
+        }
+    }
+}
+
+/* Load Styles */
+.load {
+    background-color: #000;
+
+    h1 {
+        color: var(--white);
+        text-shadow: 0 0 30px var(--white);
+    }
+}
+
+/* Background Styles */
+.bg {
+    z-index: -1000;
+    background-color: #333;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/9a/512x512_Dissolve_Noise_Texture.png');
+    backdrop-filter: brightness(95%) contrast(100%);
+    filter: invert(0%);
+    background-size: 80%;
+    transform: translate(0, 0) rotate(0deg) scale(1) skew(0deg);
+    opacity: 0.5;
+    width: 150%;
+    height: 150%;
+    animation: noiseanim 30ms infinite linear alternate-reverse;
+}
+
+.vignette {
+    z-index: -999;
+    background-image: radial-gradient(ellipse at center, rgba(30, 30, 30, .5) 50%, rgba(0, 0, 0, 1) 100%);
+}
+
+.bg,
+.vignette {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Moving Styles */
+.moving {
+    animation: moving 50ms infinite linear alternate-reverse;
+
+    &.glitch {
+        animation: glitch 250ms infinite linear alternate-reverse,
+            moving 50ms infinite linear alternate-reverse;
+    }
+
+    &.glitchText {
+        animation: glitch_text 250ms infinite linear alternate-reverse,
+            moving 50ms infinite linear alternate-reverse;
+    }
+
+    &.glitch.glitchText {
+        animation: glitch 250ms infinite linear alternate-reverse,
+            glitch_text 250ms infinite linear alternate-reverse,
+            moving 50ms infinite linear alternate-reverse;
+    }
+}
+
+.glitch {
+    animation: glitch 250ms infinite linear alternate-reverse;
+}
+
+.glitchText {
+    animation: glitch_text 250ms infinite linear alternate-reverse;
+}
+
+/* Control Panel Styles */
+.controlpanel {
+    right: 0;
+    bottom: 0;
+    margin: 3rem;
+    border: 2px solid #ddd;
+    animation: glitch 30ms linear infinite alternate-reverse;
+
+    .menu {
+        p {
+            font-size: 1rem;
+        }
+    }
+}
+
+/* Notifier Styles */
+#notifier {
+    p {
+        color: var(--red);
+    }
+}
