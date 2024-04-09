@@ -107,7 +107,7 @@ async function easterEgg() {
     });
 
     if (sysstatus == 'corrupted') {
-        document.querySelector('.mainStyleSheet').href = '/styles/corrupted.css';
+        document.querySelector('.mainStyleSheet').href = 'styles/corrupted.css';
         document.querySelector('.easter').classList.add('hidden');
         document.querySelector('#notifier').classList.remove('hidden');
         randomblink(blinkinterval);
@@ -165,7 +165,7 @@ async function startEasterEgg() {
 }
 
 async function start() {
-    document.querySelector('.mainStyleSheet').href = './styles/corrupted.css';
+    document.querySelector('.mainStyleSheet').href = 'styles/corrupted.css';
     document.querySelector('.easter').classList.add('hidden');
     document.querySelector('#aboutMe .pcontent').classList.remove('hidden');
     document.querySelector('.scriptstable').src = '';
@@ -173,7 +173,7 @@ async function start() {
 }
 
 async function revert() {
-    document.querySelector('.mainStyleSheet').href = './styles/stable.css';
+    document.querySelector('.mainStyleSheet').href = 'styles/stable.css';
     document.querySelector('.easter').classList.remove('hidden');
     document.querySelector('#aboutMe .pcontent').classList.add('hidden');
     document.querySelector('.scriptstable').src = 'stable.js';
