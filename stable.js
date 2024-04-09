@@ -1,5 +1,5 @@
 var currentPage = '#aboutMe';
-document.querySelector('.mainStyleSheet').href = '/styles/stable.css';
+document.querySelector('.mainStyleSheet').href = 'styles/stable.css';
 
 function cutString(str, start, end) {
     const startIndex = str.indexOf(start);
