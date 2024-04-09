@@ -65,7 +65,7 @@ getData('projects').then(async result => {
         h4.innerHTML = item.name; p.innerHTML = item.description;
         a.innerHTML = 'View Project on GitHub';
         li.appendChild(h4); li.appendChild(p); li.appendChild(a);
-        li.addEventListener('click', () => window.open(item.link, '_blank'));
+        li.querySelector('p:last-child').addEventListener('click', () => window.open(item.link, '_blank'));
         projects.querySelector('.projectslist').appendChild(li);
         projects.querySelector('.info p').innerHTML = `Total of featured projects: ${result.pagecontent.items.length}`;
         li.classList.add('glitch');

@@ -9,6 +9,7 @@
     --card-color: #151c23;
     --card-hover: #1a2129;
     --accent: #f2f2a2;
+    --transition: all 0.25s ease-in-out;
 }
 
 body {
@@ -17,7 +18,7 @@ body {
     justify-content: flex-start;
     width: 100vw;
     height: fit-content;
-    font-family: 'Mountserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: var(--main-bg);
     color: var(--font-color);
     gap: 1rem;
@@ -34,13 +35,13 @@ header {
     width: 100%;
     background-color: var(--main-bg);
     padding: 3rem 6rem;
-    transition: all 0.3s ease;
-    
+    transition: var(--transition);
+
     p {
-        font-weight: lighter;
+        font-weight: 400;
         font-size: 1rem;
     }
-    
+
     ul {
         display: flex;
         flex-direction: row;
@@ -52,21 +53,22 @@ header {
         align-items: center;
         gap: 1rem;
         flex-direction: row;
-        
+
         img {
             width: 3rem;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
-        
+
         h4 {
             font-size: 1rem;
-            font-weight: lighter;
+            font-weight: 400;
         }
     }
 
     &.collapsed {
-        transition: all 0.3s ease;
+        transition: var(--transition);
         padding: 2rem 6rem;
+
         img {
             width: 2.5rem;
         }
@@ -75,15 +77,25 @@ header {
     li {
         opacity: .8;
         cursor: pointer;
+        transition: var(--transition);
 
         &:hover {
             opacity: 1;
+            transform: translate(0, -.1rem);
+
+            &::after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 1px;
+                background-color: var(--font-color);
+            }
         }
 
-        &.active {
+        &.active p {
             opacity: 1;
             color: var(--accent);
-            font-weight: 800;
+            font-weight: 600;
 
             &::after {
                 content: '';
@@ -128,7 +140,6 @@ section {
     margin-top: 6rem;
 
     p {
-        /* font-size: 1.4rem; */
         font-size: 1.2rem;
     }
 }
@@ -136,24 +147,26 @@ section {
 #aboutMe {
     justify-content: center;
     align-items: center;
-    padding-top: 4rem;
+    padding-bottom: 14vh;
 
     h1 {
         font-size: 4rem;
-        margin-bottom: 1rem;
     }
-    .pcontent {display: none;}
+    
+    .pcontent {
+        display: none;
+    }
     
     p {
-        font-size: 2rem;
-        padding-right: 1rem;
-        font-weight: lighter;
-        
+        font-size: 1.8rem;
+        padding-right: 4rem;
+        font-weight: 400;
+
         &:nth-last-of-type(2) {
             font-size: 1.4rem;
             line-height: 100%;
             color: var(--accent);
-            font-weight: bold;
+            font-weight: 600;
         }
     }
 }
@@ -174,6 +187,7 @@ section {
         flex-wrap: wrap;
         gap: 2rem;
         margin: 2rem 0;
+        font-weight: 400;
 
         p {
             font-size: 1rem;
@@ -220,7 +234,7 @@ section {
             }
 
             li {
-                cursor: pointer;
+                cursor: default;
                 display: flex;
                 flex-direction: column;
                 align-items: start;
@@ -238,6 +252,7 @@ section {
                     position: absolute;
                     border: 1px solid var(--border-color);
                     border-radius: .4rem;
+                    font-size: .9rem;
                 }
 
                 &:hover {
@@ -251,7 +266,8 @@ section {
                     }
 
                     p:last-child {
-                        transition: all .3s ease;
+                        cursor: pointer;
+                        transition: var(--transition);
                         bottom: .8rem;
                         position: absolute;
                         visibility: visible;
@@ -264,6 +280,7 @@ section {
                         &:hover {
                             background-color: var(--accent);
                             color: var(--card-color);
+                            font-weight: 600;
                         }
                     }
                 }
@@ -285,10 +302,10 @@ section {
 #Skills ul li,
 #Projects ul li {
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: var(--transition);
 
     img {
-        transition: all 0.3s ease;
+        transition: var(--transition);
     }
 
     &:hover {
@@ -306,6 +323,7 @@ section {
         color: var(--card-color);
         background: var(--accent);
         opacity: .8;
+        font-weight: 600;
 
         img {
             filter: invert(.9);
@@ -317,7 +335,7 @@ section {
     position: absolute;
     z-index: 0;
     align-self: center;
-    bottom: -6vh;
+    bottom: -5vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -332,6 +350,19 @@ section {
     border-radius: .5rem;
     font-size: 1rem;
     font-weight: 600;
-    box-shadow: 0 .5rem 1.5rem -.5rem rgba(200,200,150,.8);
+    box-shadow: 0 .5rem 1.5rem -.5rem rgba(200, 200, 150, .8);
+    transition: var(--transition);
     cursor: pointer;
+
+    &:hover {
+        transform: translateY(-.4rem);
+        box-shadow: 0 1rem 2rem -.5rem rgba(200, 200, 150, .5);
+    }
+
+    &:active {
+        transition: var(--transition);
+        transform: translateY(0);
+        box-shadow: 0 0 0 0 rgba(200, 200, 150, .5);
+        opacity: .9;
+    }
 }
