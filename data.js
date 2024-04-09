@@ -6,13 +6,13 @@ const contacts = document.querySelector('#Contacts');
 // JSON
 async function getData(...args) {
     const response = await fetch('data.json');
-    const data = await response.text();
+    const data = await response.json();
     let result = data['data'];
     for (const arg of args) {
         result = result[arg];
         if (result === undefined) { throw new Error('Invalid argument'); }
     }
-    return result;
+    return await result;
 }
 
 // SREENS CONTENTS

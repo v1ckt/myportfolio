@@ -29,7 +29,7 @@ document.querySelector("#skillsbtn").addEventListener('click', () => { scrollTo(
 document.querySelector("#projectsbtn").addEventListener('click', () => { scrollTo('#Projects', '#projectsbtn') });
 document.querySelector("#contactsbtn").addEventListener('click', () => { scrollTo('#Contacts', '#contactsbtn') });
 
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
     const firstLine = document.createElement('p');
     const middleLine = document.createElement('h1');
     const lastLine = document.createElement('p');
@@ -43,18 +43,14 @@ window.addEventListener('load', () => {
     const middle = cutString(text, "I'm", "Developer.");
     const last = cutString(text, 'I recently', 'engineering.');
     
-    firstLine.innerHTML = first;
-    middleLine.innerHTML = middle;
-    lastLine.innerHTML = last;
+    firstLine.innerHTML = await first;
+    middleLine.innerHTML = await middle;
+    lastLine.innerHTML = await last;
     
     presentation.appendChild(firstLine);
     presentation.appendChild(middleLine);
     presentation.appendChild(lastLine);
     
-    document.querySelector('header .headerleft h4').innerHTML = cutString(text, 'Vicktor', 'Teixeira');
+    document.querySelector('header .headerleft h4').innerHTML = await cutString(text, 'Vicktor', 'Teixeira');
     scrollTo('#aboutMe', '#aboutbtn');
-});
-
-window.addEventListener('reload', () => {
-    // scrollTo(currentPage);
 });
