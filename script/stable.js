@@ -16,6 +16,7 @@ function scrollToo(element, nav) {
     document.querySelector(nav).classList.add('active');
     currentPage = element;
     currentNav = nav;
+
 }
 
 function headerEngine(style) {
@@ -44,8 +45,8 @@ document.querySelector("#contactsbtn").addEventListener('click', () => {
     headerEngine(true);
 });
 
-
-window.addEventListener('load', async () => {
+window.addEventListener('load', () => {
+    setTimeout(() => {
     const firstLine = document.createElement('p');
     const middleLine = document.createElement('h1');
     const lastLine = document.createElement('p');
@@ -63,9 +64,9 @@ window.addEventListener('load', async () => {
 
     btn.addEventListener('click', () => { document.querySelector("#skillsbtn").click(); });
 
-    firstLine.innerHTML = await first;
-    middleLine.innerHTML = await middle;
-    lastLine.innerHTML = await last;
+    firstLine.innerHTML = first;
+    middleLine.innerHTML = middle;
+    lastLine.innerHTML = last;
 
     presentation.appendChild(firstLine);
     presentation.appendChild(middleLine);
@@ -73,6 +74,7 @@ window.addEventListener('load', async () => {
     presentation.appendChild(btn);
 
     document.querySelector("#aboutbtn").click();
+    }, 100);
 });
 
 window.addEventListener('resize', async () => {
@@ -99,7 +101,6 @@ randrange = (min, max) => Math.random() * (max - min) + min;
         document.querySelector(e).style.opacity = `${opacity}%`;
         bgblurElement.style.transition = 'backdrop-filter 5000ms linear';
         bgblurElement.style.backdropFilter = `blur(${blur.toFixed(0)}px)`;
-
 
     }, 5000);
 });

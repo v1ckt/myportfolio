@@ -25,6 +25,9 @@
     <title>Vicktor Teixeira • Dev</title>
   </head>
   <body>
+    <div id="loading-screen" style="display: none;">
+      <h1>Carregando...</h1>
+  </div>
     <header>
       <div class="headerleft">
         <img src="media/images/pic2.png" alt="">
@@ -144,7 +147,20 @@
           <img src="media/icons/back.svg" alt="" width="24" class="glitchText" />
         </div>
         <div class="pagecontent glitchText glitch moving">
-          <p>Coming Soon.</p>
+          <div class="content"></div>
+          <form action="POST" class="">
+            <div class="completename">
+              <input type="text" name="" id="name" placeholder="Name">
+              <input type="text" name="" id="lastname" placeholder="Last Name">
+            </div>
+            <div>
+              <input type="email" name="" id="email" placeholder="E-mail">
+            </div>
+            <div>
+              <textarea name="" id="message" placeholder="Message"></textarea>
+            </div>
+            <input type="submit" value="Send Message">
+          </form>
         </div>
       </section>
     </div>
@@ -180,6 +196,6 @@
   </body>
 
   <script src="script/data.js"></script>
-  <script src="script/stable.js" class="scriptstable"></script>
   <script src="script/script.js"></script>
+  <script src="script/stable.js" class="scriptstable"></script>
 </html>

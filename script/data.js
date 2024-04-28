@@ -16,7 +16,6 @@ async function getData(...args) {
     }
     return await result;
 }
-
 // SREENS CONTENTS
 
 getData('aboutMe').then(async result => {
@@ -127,10 +126,10 @@ getData('projects').then(async result => {
                 }
             });
         });
-        
+
         projects.querySelector('.projectslist').appendChild(li);
         projects.querySelector('.info p').innerHTML = `Total of featured projects: ${result.pagecontent.items.length}`;
         li.classList.add('glitch');
-        
+
     });
 });
