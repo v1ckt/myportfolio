@@ -32,10 +32,10 @@
     --border-hover-color: hsl(var(--accent-hue), 15%, 14%);
     --border-hover-s-color: hsl(var(--secondary-hue), 15%, 14%);
 
-    --header-color: hsla(var(--accent-hue), 50%, 5%, .7);
+    --header-color: hsla(var(--accent-hue), 50%, 6%, .7);
 
-    --background-color: hsl(var(--accent-hue), 50%, 5%);
-    --background-s-color: hsl(var(--secondary-hue), 50%, 5%);
+    --background-color: hsl(var(--accent-hue), 50%, 6%);
+    --background-s-color: hsl(var(--secondary-hue), 50%, 6%);
 
 }
 
