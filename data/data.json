@@ -7,7 +7,7 @@
                         "education": "Bachelor's Degree in Computer Science",
                         "title": "Web Developer",
                         "texttitle": "Know More About Me",
-                        "pic": "/media/images/corrupted.png",
+                        "pic": "media/images/corrupted.png",
                         "location": "Barra do Corda, Maranhão, Brazil",
                         "presentation": "Hello, my name is Vicktor Teixeira and I'm a Web Developer.<br>I recently earned my bachelor's degree in Computer Science, which has equipped me with a strong understanding of coding and software engineering.<br><br>I am passionate about User Interface/User Experience (UI/UX) Design, particularly with creative layouts, and I also enjoy Graphic Design.<br><br>If you're looking for me, you'll probably find me admiring beautiful designs."
                     }
@@ -38,21 +38,21 @@
                             "description": "A simple website for a fictional nightclub.",
                             "technologies": ["PHP", "Laravel"],
                             "link": "https://github.com/v1ckt/BoateAzul",
-                            "images": ["/media/images/projects/boateazul1.png", "/media/images/projects/boateazul2.png", "/media/images/projects/boateazul3.png", "/media/images/projects/boateazul4.png"]
+                            "images": ["media/images/projects/boateazul1.png", "/media/images/projects/boateazul2.png", "/media/images/projects/boateazul3.png", "/media/images/projects/boateazul4.png"]
                         },
                         {
                             "name": "Theme UI",
                             "description": "A website where the color scheme are defined by the predominant color of an image.",
                             "technologies": ["HTML", "CSS", "JavaScript"],
                             "link": "https://github.com/v1ckt/Theme-UI",
-                            "images": ["/media/images/projects/themeui1.png", "/media/images/projects/themeui2.png", "/media/images/projects/themeuid1.png", "/media/images/projects/themeuid2.png"]
+                            "images": ["media/images/projects/themeui1.png", "/media/images/projects/themeui2.png", "/media/images/projects/themeuid1.png", "/media/images/projects/themeuid2.png"]
                         },
                         {
                             "name": "III Computer Science Week",
                             "description": "A website for the III Computer Science Week of the Federal Institute of Maranhão, Campus Caxias.",
                             "technologies": ["HTML", "CSS", "JavaScript"],
                             "link": "https://github.com/v1ckt/ComputerSienceWeek",
-                            "images": ["/media/images/projects/csweek1.png", "/media/images/projects/csweek2.png", "/media/images/projects/csweek3.png", "/media/images/projects/csweek4.png"]
+                            "images": ["media/images/projects/csweek1.png", "/media/images/projects/csweek2.png", "/media/images/projects/csweek3.png", "/media/images/projects/csweek4.png"]
                         },
                         {
                             "name": "RoundHost",
