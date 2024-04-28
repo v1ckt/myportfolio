@@ -32,7 +32,7 @@
     --border-hover-color: hsl(var(--accent-hue), 15%, 14%);
     --border-hover-s-color: hsl(var(--secondary-hue), 15%, 14%);
 
-    --header-color: hsla(var(--accent-hue), 50%, 6%, .7);
+    --header-color: hsla(var(--accent-hue), 50%, 6%, .6);
 
     --background-color: hsl(var(--accent-hue), 50%, 6%);
     --background-s-color: hsl(var(--secondary-hue), 50%, 6%);
@@ -268,11 +268,16 @@ input[type=submit] {
     transition: var(--transition);
     font-weight: 600;
 
-
     &:active {
         background: var(--btn-active-color);
         border-color: transparent;
         color: var(--s-font-color);
+
+        &.secondary {
+            background: var(--btn-active-s-color);
+            border-color: transparent;
+            color: var(--s-font-s-color);
+        }
 
     }
 
@@ -282,6 +287,11 @@ input[type=submit] {
         border-color: transparent;
         transition: var(--transition);
 
+        &.secondary {
+            color: var(--s-font-s-color);
+            background: var(--btn-hover-s-color);
+            border-color: transparent;
+        }
     }
 
 }
@@ -687,6 +697,7 @@ form {
             margin-left: .3rem;
         }
     }
+
     .completename {
         flex-direction: row;
         gap: 1rem;
