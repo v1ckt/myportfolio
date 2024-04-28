@@ -37,25 +37,29 @@
                             "name": "Boate Azul",
                             "description": "A simple website for a fictional nightclub.",
                             "technologies": ["PHP", "Laravel"],
-                            "link": "https://github.com/v1ckt/BoateAzul" 
+                            "link": "https://github.com/v1ckt/BoateAzul",
+                            "images": ["/media/images/projects/boateazul1.png", "/media/images/projects/boateazul2.png", "/media/images/projects/boateazul3.png", "/media/images/projects/boateazul4.png"]
                         },
                         {
                             "name": "Theme UI",
                             "description": "A website where the color scheme are defined by the predominant color of an image.",
                             "technologies": ["HTML", "CSS", "JavaScript"],
-                            "link": "https://github.com/v1ckt/Theme-UI"
+                            "link": "https://github.com/v1ckt/Theme-UI",
+                            "images": ["/media/images/projects/themeui1.png", "/media/images/projects/themeui2.png", "/media/images/projects/themeuid1.png", "/media/images/projects/themeuid2.png"]
                         },
                         {
                             "name": "III Computer Science Week",
                             "description": "A website for the III Computer Science Week of the Federal Institute of Maranhão, Campus Caxias.",
                             "technologies": ["HTML", "CSS", "JavaScript"],
-                            "link": "https://github.com/v1ckt/ComputerSienceWeek"
+                            "link": "https://github.com/v1ckt/ComputerSienceWeek",
+                            "images": ["/media/images/projects/csweek1.png", "/media/images/projects/csweek2.png", "/media/images/projects/csweek3.png", "/media/images/projects/csweek4.png"]
                         },
                         {
                             "name": "RoundHost",
                             "description": "A login page for a fictional hosting company.",
                             "technologies": ["HTML", "CSS", "JavaScript"],
-                            "link": "https://github.com/v1ckt/Round-Host"
+                            "link": "https://github.com/v1ckt/Round-Host",
+                            "images": ["media/images/projects/roundhost.png"]
                         }
                         ]
                     }
