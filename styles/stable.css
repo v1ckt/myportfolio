@@ -778,8 +778,8 @@ form {
         display: flex;
         align-items: center;
         justify-content: center;
-        background: radial-gradient(var(--font-color) 10%,
-                #4f4f2f 10%,
+        background: radial-gradient(var(--font-color) 15%,
+                #4f4f2f 15%,
                 #4f4f2f 40%,
                 var(--font-color) 30%,
                 var(--font-color) 50%,
