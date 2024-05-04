@@ -34,7 +34,7 @@ window.addEventListener('load', () => {
                 <button>Download CV</button>
             </div>`;
 
-        document.querySelector('.btns').addEventListener('click', () => { document.querySelector("#skillsbtn").click(); });
+        document.querySelector('.btns > .secondary').addEventListener('click', () => { document.querySelector("#skillsbtn").click(); });
         document.querySelector("#aboutbtn").click();
     }, 100);
 });
@@ -66,4 +66,3 @@ randrange = (min, max) => Math.random() * (max - min) + min;
 
     }, 5000);
 });
-

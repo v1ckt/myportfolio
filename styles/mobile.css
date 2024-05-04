@@ -1,0 +1,30 @@
+@media screen and (max-width: 768px) {
+    header {        
+        .headerleft {
+            h4 {
+                display: none;
+            }
+        }
+        
+        p {
+            display: none;
+        }
+    }
+    
+    body {
+        overflow: auto;
+    }
+
+    section {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+    }
+
+
+}

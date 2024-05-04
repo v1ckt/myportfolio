@@ -47,22 +47,6 @@ getData('projects').then(async result => {
     projects.querySelector('.content .presentation .pcontent').innerHTML = await result.pagecontent.presentation;
     const items = result.pagecontent.items;
     items.forEach(async (item) => {
-
-        // projects.querySelector('.projectslist').innerHTML +=`
-        // <li class="glitch">
-        // <img src="${item.images[0]}">
-        // <div class="text">
-        //     <h4>${item.name}</h4>
-        //     <p>${item.description}</p>
-        // </div>
-        // <div class="options">
-        //     <button onclick="openUrl('${item.link}')" id="openWindow">Project Repo</button>
-        //     <button onclick="" class="secondary">Details</button>
-        // </div>
-        // </li>
-        // `;
-
-
         const li = document.createElement('li');
         const h4 = document.createElement('h4');
         const p = document.createElement('p'); const a = document.createElement('button');

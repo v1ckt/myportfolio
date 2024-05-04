@@ -59,10 +59,10 @@
 
     --btn-color: hsl(var(--accent-hue), 23%, 14%);
     --btn-s-color: hsl(var(--secondary-hue), 23%, 14%);
-    --btn-active-color: hsl(var(--accent-hue), 23%, 70%);
-    --btn-active-s-color: hsl(var(--secondary-hue), 23%, 70%);
-    --btn-hover-color: hsl(var(--accent-hue), 23%, 80%);
-    --btn-hover-s-color: hsl(var(--secondary-hue), 23%, 80%);
+    --btn-active-color: hsl(var(--accent-hue), 23%, 60%);
+    --btn-active-s-color: hsl(var(--secondary-hue), 23%, 60%);
+    --btn-hover-color: hsl(var(--accent-hue), 23%, 70%);
+    --btn-hover-s-color: hsl(var(--secondary-hue), 23%, 70%);
 
     --border-color: hsl(var(--accent-hue), 15%, 15%);
     --border-s-color: hsl(var(--secondary-hue), 15%, 15%);
@@ -307,14 +307,14 @@ input[type=submit] {
     font-weight: 600;
 
     &:active {
-        background: var(--btn-active-color);
         border-color: transparent;
         color: var(--s-font-color);
+        background: var(--btn-active-color);
 
         &.secondary {
-            background: var(--btn-active-s-color);
             border-color: transparent;
             color: var(--s-font-s-color);
+            background: var(--btn-active-s-color);
         }
 
     }
@@ -508,6 +508,8 @@ textarea {
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
+        display: flex;
+        gap: 1rem;
     }
 
     p {
@@ -614,6 +616,7 @@ textarea {
 
                 img {
                     width: 14rem;
+                    width: -webkit-fill-available;
                     border-radius: var(--border-radius-9);
                     padding: .5rem;
                     margin-bottom: -.4rem;
