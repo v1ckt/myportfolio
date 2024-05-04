@@ -1,10 +1,12 @@
 * {
     line-height: 150%;
     --transition: all 0.2s ease;
-    --border-radius: .5rem;
+    --border-radius-4: .4rem;
+    --border-radius-5: .5rem;
+    --border-radius-9: .9rem;
 }
 
-[data-theme="dark"] {
+[data-theme="OLD-dark"] {
     --accent-hue: 202;
     --secondary-hue: 52;
 
@@ -31,6 +33,41 @@
     --border-s-color: hsl(var(--secondary-hue), 15%, 12%);
     --border-hover-color: hsl(var(--accent-hue), 15%, 14%);
     --border-hover-s-color: hsl(var(--secondary-hue), 15%, 14%);
+
+    --header-color: hsla(var(--accent-hue), 50%, 6%, .6);
+
+    --background-color: hsl(var(--accent-hue), 50%, 6%);
+    --background-s-color: hsl(var(--secondary-hue), 50%, 6%);
+
+}
+
+[data-theme="dark"] {
+    --accent-hue: 202;
+    --secondary-hue: 52;
+
+    --color: hsl(var(--accent-hue), 40%, 13%);
+    --s-color: hsl(var(--secondary-hue), 40%, 13%);
+
+    --font-color: hsl(var(--accent-hue), 30%, 90%);
+    --font-s-color: hsl(var(--secondary-hue), 40%, 80%);
+    --s-font-color: hsl(var(--accent-hue), 30%, 13%);
+    --s-font-s-color: hsl(var(--secondary-hue), 30%, 13%);
+
+    --card-color: hsla(var(--accent-hue), 0%, 100%, .03);
+    --card-hover: hsla(var(--accent-hue), 00%, 100%, .05);
+    --card-op-color: hsla(var(--accent-hue), 0%, 0%, .3);
+
+    --btn-color: hsl(var(--accent-hue), 23%, 14%);
+    --btn-s-color: hsl(var(--secondary-hue), 23%, 14%);
+    --btn-active-color: hsl(var(--accent-hue), 23%, 70%);
+    --btn-active-s-color: hsl(var(--secondary-hue), 23%, 70%);
+    --btn-hover-color: hsl(var(--accent-hue), 23%, 80%);
+    --btn-hover-s-color: hsl(var(--secondary-hue), 23%, 80%);
+
+    --border-color: hsl(var(--accent-hue), 15%, 15%);
+    --border-s-color: hsl(var(--secondary-hue), 15%, 15%);
+    --border-hover-color: hsl(var(--accent-hue), 15%, 17%);
+    --border-hover-s-color: hsl(var(--secondary-hue), 15%, 17%);
 
     --header-color: hsla(var(--accent-hue), 50%, 6%, .6);
 
@@ -206,6 +243,7 @@ header {
 
             &.secondary {
                 color: var(--font-s-color);
+                transition: var(--transition);
             }
 
         }
@@ -233,7 +271,7 @@ section {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 90vh;
+    height: 100%;
     margin-top: 10vh;
     padding: 0 6rem;
     overflow: auto;
@@ -258,7 +296,7 @@ section {
 button,
 input[type=submit] {
     padding: .5rem 1rem;
-    border-radius: .4rem;
+    border-radius: var(--border-radius-4);
     color: var(--font-color);
     background: var(--btn-color);
     border: none;
@@ -303,7 +341,7 @@ input[type=password],
 textarea {
     font-family: 'Montserrat', sans-serif;
     padding: .5rem;
-    border-radius: .4rem;
+    border-radius: var(--border-radius-4);
     border: 1px solid var(--border-color);
     background: var(--card-color);
     color: var(--font-color);
@@ -351,22 +389,30 @@ textarea {
 
 .modalWindow {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-evenly;
     align-items: center;
-    background-color: rgba(0, 0, 0, .4);
+    background-color: rgba(0, 0, 0, .5);
     width: 100vw;
     height: 100vh;
-    backdrop-filter: blur(20px) grayscale(50%);
+    backdrop-filter: blur(60px);
     position: fixed;
     z-index: 100;
+    justify-content: space-evenly;
 
     >.modalContent {
         position: relative;
         background-color: var(--card-color);
         border: 1px solid var(--border-color);
-        border-radius: var(--border-radius);
-        max-width: 35vmax;
+        border-radius: var(--border-radius-5);
+        max-width: 45vmax;
+
+        >.title {
+            margin-top: .4rem;
+            text-align: center;
+            font-size: 1.1rem;
+            padding: 0;
+        }
 
         >.imgbtn {
             display: flex;
@@ -379,7 +425,7 @@ textarea {
                 background-color: var(--btn-color);
                 width: .4rem;
                 height: .4rem;
-                border-radius: 1rem;
+                border-radius: var(--border-radius-9);
                 cursor: pointer;
                 transition: var(--transition);
 
@@ -406,7 +452,7 @@ textarea {
             img {
                 scroll-snap-align: center;
                 width: 100%;
-                border-radius: .35rem;
+                border-radius: var(--border-radius-4);
             }
         }
     }
@@ -421,7 +467,7 @@ textarea {
         flex-direction: row;
         justify-content: space-between;
         background: var(--card-op-color);
-        border-radius: 0 0 .4rem .4rem;
+        border-radius: 0 0 var(--border-radius-5) var(--border-radius-5);
         padding: .5rem;
     }
 }
@@ -457,7 +503,7 @@ textarea {
         display: none;
     }
 
-    button {
+    .btns {
         position: absolute;
         bottom: 0;
         left: 50%;
@@ -513,10 +559,10 @@ textarea {
             font-weight: 200;
 
             &:hover {
-                background: var(--card-hover);
                 color: var(--font-color);
                 transform: scale(1.05);
                 font-weight: 600;
+                background: var(--card-hover);
 
                 img {
                     transition: var(--transition);
@@ -540,7 +586,6 @@ textarea {
             position: relative;
             display: flex;
             justify-content: center;
-            width: 90vw;
             gap: 1rem;
             text-align: left;
             flex-wrap: wrap;
@@ -563,13 +608,13 @@ textarea {
                 width: 14rem;
                 border: 1px solid var(--border-color);
                 background-color: var(--card-color);
-                border-radius: var(--border-radius);
+                border-radius: var(--border-radius-5);
                 transition: var(--transition);
                 position: relative;
 
                 img {
                     width: 14rem;
-                    border-radius: .9rem;
+                    border-radius: var(--border-radius-9);
                     padding: .5rem;
                     margin-bottom: -.4rem;
                 }
@@ -585,7 +630,7 @@ textarea {
                 .options {
                     background-color: var(--card-op-color);
                     padding: .5rem;
-                    border-radius: 0 0 .4rem .4rem;
+                    border-radius: 0 0 var(--border-radius-5) var(--border-radius-5);
                     display: flex;
                     flex-direction: row-reverse;
                     justify-content: space-between;
@@ -593,9 +638,13 @@ textarea {
                     position: absolute;
                     bottom: 0;
                     display: none;
+                    backdrop-filter: blur(60px);
                 }
 
                 &:hover {
+                    background: var(--card-hover);
+                    transform: scale(1.01);
+
                     .options {
                         display: flex;
                     }
@@ -648,7 +697,7 @@ textarea {
         height: 100%;
         z-index: -101;
         outline: 10vh solid var(--background-color);
-        border-radius: .5rem;
+        border-radius: var(--border-radius-4);
     }
 
     .deco {
@@ -681,7 +730,7 @@ form {
     width: 100%;
     max-width: 30rem;
     padding: .5rem;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-5);
     background: var(--card-color);
     border: 1px solid var(--border-color);
     transition: var(--transition);
@@ -701,5 +750,49 @@ form {
     .completename {
         flex-direction: row;
         gap: 1rem;
+    }
+}
+
+
+@keyframes thisanim {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.maintenance {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100vw;
+    height: 100Vh;
+
+    div {
+        border-radius: 100rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(var(--font-color) 10%,
+                #4f4f2f 10%,
+                #4f4f2f 40%,
+                var(--font-color) 30%,
+                var(--font-color) 50%,
+                #4f4f2f 50%,
+                var(--font-color) 50%,
+                var(--font-color) 55%,
+                #202010 50%);
+        height: 40vh;
+        width: 40vh;
+        border-radius: 100rem;
+        animation: thisanim 120s linear infinite;
+        padding-top: .45rem;
+        font-size: 50vh;
+        margin: 0;
     }
 }

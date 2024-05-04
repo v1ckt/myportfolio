@@ -2,32 +2,6 @@ var currentPage;
 var currentNav;
 document.querySelector('.mainStyleSheet').href = 'styles/stable.css';
 
-function cutString(str, start, end) {
-    const startIndex = str.indexOf(start);
-    const endIndex = str.indexOf(end, startIndex) + end.length;
-    return str.substring(startIndex, endIndex);
-}
-
-function scrollToo(element, nav) {
-    document.querySelector(element).scrollIntoView({ behavior: 'smooth' });
-    document.querySelectorAll('header ul li').forEach((a) => {
-        a.classList.remove('active');
-    });
-    document.querySelector(nav).classList.add('active');
-    currentPage = element;
-    currentNav = nav;
-
-}
-
-function headerEngine(style) {
-    if (style == true) {
-        document.querySelector('header').classList.add('collapsed');
-        document.querySelector('.sections').classList.add('expanded');
-    } else {
-        document.querySelector('header').classList.remove('collapsed');
-        document.querySelector('.sections').classList.remove('expanded');
-    }
-}
 document.querySelector("#aboutbtn").addEventListener('click', () => {
     scrollToo('#aboutMe', '#aboutbtn');
     headerEngine(false);
@@ -47,33 +21,21 @@ document.querySelector("#contactsbtn").addEventListener('click', () => {
 
 window.addEventListener('load', () => {
     setTimeout(() => {
-    const firstLine = document.createElement('p');
-    const middleLine = document.createElement('h1');
-    const lastLine = document.createElement('p');
-    const element = document.querySelector('#aboutMe .content .presentation .pcontent');
-    const presentation = document.querySelector('#aboutMe .presentation');
-    const text = element ? element.textContent : '';
-    const first = cutString(text, 'Hello', 'Vicktor');
-    const middle = cutString(text, "I'm", "Developer.");
-    const last = cutString(text, 'I recently', 'engineering.');
-    const btn = document.createElement('button');
+        const element = document.querySelector('#aboutMe .content .presentation .pcontent');
+        const presentation = document.querySelector('#aboutMe .presentation');
+        const text = element ? element.textContent : '';
 
-    btn.innerHTML = 'See More';
-    btn.classList.add('secondary');
-    btn.style.marginTop = '20px';
+        presentation.innerHTML +=
+            `<p>${cutString(text, 'Hello', 'Vicktor')}</p>
+            <h1>${cutString(text, "I'm", "Developer")}</h1>
+            <p>${cutString(text, 'I recently', 'engineering.')}</p>
+            <div class="btns" style="margin-top:20px;">
+                <button class="secondary">See More</button>
+                <button>Download CV</button>
+            </div>`;
 
-    btn.addEventListener('click', () => { document.querySelector("#skillsbtn").click(); });
-
-    firstLine.innerHTML = first;
-    middleLine.innerHTML = middle;
-    lastLine.innerHTML = last;
-
-    presentation.appendChild(firstLine);
-    presentation.appendChild(middleLine);
-    presentation.appendChild(lastLine);
-    presentation.appendChild(btn);
-
-    document.querySelector("#aboutbtn").click();
+        document.querySelector('.btns').addEventListener('click', () => { document.querySelector("#skillsbtn").click(); });
+        document.querySelector("#aboutbtn").click();
     }, 100);
 });
 
@@ -105,34 +67,3 @@ randrange = (min, max) => Math.random() * (max - min) + min;
     }, 5000);
 });
 
-function scrollCaroussel(item, index) {
-    const caroussel = document.querySelector(item);
-    const images = Array.from(caroussel.children);
-    const indexValue = index.id.replace('index', '');
-    const img = images.find((img) => img.id === indexValue);
-    caroussel.scrollLeft = img.offsetLeft;
-    document.querySelectorAll('.item').forEach((index) => {
-        index.classList.remove('active');
-    });
-    index.classList.add('active');
-}
-
-function cAutoScroll(caroussel, eclicked, controll) {
-    const ec = document.querySelector(eclicked);
-    const ce = caroussel;
-    let interval;
-    console.log('start');
-    if (controll === 'hover') {
-        let index = 0;
-        ce.addEventListener('mouseenter', () => {
-            interval = setInterval(() => {
-                ec.children[index].click();
-                index = index === ec.children.length - 1 ? 0 : index + 1;
-            }, 1000);
-        });
-        ce.addEventListener('mouseleave', () => {
-            index = index;
-            clearInterval(interval);
-        });
-    }
-}
