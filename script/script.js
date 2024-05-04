@@ -1,6 +1,6 @@
 // COMING SOON PAGE FUNCTION
 // show manuntention screen if the page isn't on a localhost
-if (location.hostname !== '127.0.0.1') {
+if (location.hostname === !'127.0.0.1') {
     document.querySelector('body').innerHTML = `
     <div class="maintenance">
         <div>&#x2699
