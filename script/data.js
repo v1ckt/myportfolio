@@ -3,20 +3,6 @@ const skills = document.querySelector('#Skills');
 const projects = document.querySelector('#Projects');
 const contacts = document.querySelector('#Contacts');
 
-// JSON
-async function getData(...args) {
-    const response = await fetch('data/data.json');
-    const data = await response.json();
-    let result = data['data'];
-    for (const arg of args) {
-        if (result[arg] === undefined) {
-            throw new Error(`Invalid argument: ${arg}`);
-        }
-        result = result[arg];
-    }
-    return await result;
-}
-
 // SREENS CONTENTS
 getData('aboutMe').then(async result => {
     aboutme.querySelector('.title').innerHTML = await result.pagetitle;
