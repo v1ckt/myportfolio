@@ -39,11 +39,7 @@ getData('skills').then(async result => {
         skills.querySelector('.toolslist').innerHTML += `
         <li>
             <button>
-            <div style="
-            width: 52px;
-            height: 52px;
-            display:flex;align-items:center;justify-content:center;overflow:hidden;
-            ">
+            <div class="skillimg">
                 <img src="media/icons/skills/${skill}.svg" class="glitchText" style="width: inherit;">
             </div>
             <p>${skill}</p>
