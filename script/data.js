@@ -20,20 +20,35 @@ getData('skills').then(async result => {
     skills.querySelector('.info .passion').innerHTML += await result.pagecontent.passion;
     skills.querySelector('.info .hobbie').innerHTML += await result.pagecontent.hobbie;
 
+    skills.querySelector('.content').innerHTML += '<h1 style="order: -1;">Skills</h1>';
 
     const allskills = [].concat(result.pagecontent.tools,
         result.pagecontent.languages, result.pagecontent.frameworks);
 
     allskills.sort().forEach(async (skill) => {
-        const li = document.createElement('li');
-        const btn = document.createElement('button');
-        const p = document.createElement('p');
-        const img = document.createElement('img');
-        img.style.width = '52px'; img.src = `media/icons/skills/${skill}.svg`;
-        img.classList.add('glitchText'); p.innerHTML = await skill;
-        btn.appendChild(img); btn.appendChild(p);
-        li.appendChild(btn);
-        skills.querySelector('.toolslist').appendChild(li);
+        // const li = document.createElement('li');
+        // const btn = document.createElement('button');
+        // const p = document.createElement('p');
+        // const img = document.createElement('img');
+        // img.style.width = '52px'; img.src = `media/icons/skills/${skill}.svg`;
+        // img.classList.add('glitchText'); p.innerHTML = await skill;
+        // btn.appendChild(img); btn.appendChild(p);
+        // li.appendChild(btn);
+        // skills.querySelector('.toolslist').appendChild(li);
+
+        skills.querySelector('.toolslist').innerHTML += `
+        <li>
+            <button>
+            <div style="
+            width: 52px;
+            height: 52px;
+            display:flex;align-items:center;justify-content:center;overflow:hidden;
+            ">
+                <img src="media/icons/skills/${skill}.svg" class="glitchText" style="width: inherit;">
+            </div>
+            <p>${skill}</p>
+            </button>
+        </li>`;
     });
 
     const presentation2 = document.createElement('p');

@@ -4,6 +4,7 @@
     --border-radius-4: .4rem;
     --border-radius-5: .5rem;
     --border-radius-9: .9rem;
+    --font-family: 'Montserrat', sans-serif;
 }
 
 [data-theme="OLD-dark"] {
@@ -144,7 +145,7 @@ body {
     gap: 1rem;
     height: 100%;
     width: 100vw;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-family);
     background-color: var(--background-color);
     color: var(--font-color);
     overflow: hidden;
@@ -160,7 +161,7 @@ body {
     transition: var(--transition);
 
     &.expanded {
-        height: 85vh;
+        height: 90vh;
     }
 }
 
@@ -179,7 +180,7 @@ header {
 
     &.collapsed {
         padding: 0 6rem;
-        height: 15vh;
+        height: 10vh;
         background-color: var(--header-color);
 
         .headerleft {
@@ -305,6 +306,7 @@ input[type=submit] {
     border: 1px solid var(--border-color);
     transition: var(--transition);
     font-weight: 600;
+    font-family: var(--font-family);
 
     &:active {
         border-color: transparent;
@@ -339,7 +341,7 @@ input[type=email],
 input[type=tel],
 input[type=password],
 textarea {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-family);
     padding: .5rem;
     border-radius: var(--border-radius-4);
     border: 1px solid var(--border-color);
@@ -527,49 +529,65 @@ textarea {
 }
 
 #Skills {
-    .content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .toolslist {
+    .pagecontent {
         display: flex;
         flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 2rem;
-        margin: 2rem 0;
-        font-weight: 400;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
 
-        p {
-            font-size: 1rem;
+        .header {
+            display: none;
         }
 
-        li>button {
+        .content {
+            text-align: left;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-            aspect-ratio: 1/1;
-            width: 8rem;
+            align-items: flex-start;
+            margin-top: 4vh;
+            max-width: 40vw;
+            gap: 1rem;
+
+        }
+
+        .toolslist {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: end;
+            gap: 1rem;
+            margin-top: 2rem;
             padding: .5rem;
-            border: 1px solid var(--border-color);
-            background: var(--card-color);
-            font-weight: 200;
+            max-width: 43vw;
+            max-height: 75vh;
+            overflow: auto;
 
-            &:hover {
-                color: var(--font-color);
-                transform: scale(1.05);
-                font-weight: 600;
-                background: var(--card-hover);
+            li>button {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-around;
+                aspect-ratio: 1/1;
+                width: 8rem;
+                padding: .5rem;
+                border: 1px solid var(--border-color);
+                background: var(--card-color);
 
-                img {
+                p {
+                    font-weight: 400;
                     transition: var(--transition);
-                    mix-blend-mode: exclusion;
-                    transform: scale(1.1);
+                    font-size: .9rem;
+                }
+
+                &:hover {
+                    color: var(--font-color);
+                    transform: scale(1.05);
+                    background: var(--card-hover);
+
+                    img {
+                        transition: var(--transition);
+                        transform: scale(1.05);
+                    }
                 }
             }
         }
@@ -607,7 +625,7 @@ textarea {
                 align-items: center;
                 justify-content: flex-start;
                 flex-wrap: wrap;
-                width: 14rem;
+                width: 15rem;
                 border: 1px solid var(--border-color);
                 background-color: var(--card-color);
                 border-radius: var(--border-radius-5);

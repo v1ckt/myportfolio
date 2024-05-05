@@ -40,7 +40,9 @@ window.addEventListener('load', () => {
 });
 
 window.addEventListener('resize', async () => {
-    scrollToo(currentPage, currentNav);
+        setTimeout(() => {
+            scrollToo(currentPage, currentNav);
+        }, 150);
 });
 
 // Encontra a folha de estilo correta

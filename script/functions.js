@@ -215,21 +215,6 @@ function scrollCaroussel(item, index) {
 function cAutoScroll(caroussel, eclicked, controll) {
     const ec = document.querySelector(eclicked);
     const ce = caroussel;
-    let interval;
-    console.log('start');
-    if (controll === 'hover') {
-        let index = 0;
-        ce.addEventListener('mouseenter', () => {
-            interval = setInterval(() => {
-                ec.children[index].click();
-                index = index === ec.children.length - 1 ? 0 : index + 1;
-            }, 1000);
-        });
-        ce.addEventListener('mouseleave', () => {
-            index = index;
-            clearInterval(interval);
-        });
-    }
 }
 
 function headerEngine(style) {
@@ -248,13 +233,15 @@ function cutString(str, start, end) {
     return str.substring(startIndex, endIndex);
 }
 
-function scrollToo(element, nav) {
-    document.querySelector(element).scrollIntoView({ behavior: 'smooth' });
-    document.querySelectorAll('header ul li').forEach((a) => {
-        a.classList.remove('active');
-    });
-    document.querySelector(nav).classList.add('active');
-    currentPage = element;
-    currentNav = nav;
-
+function scrollToo(element, nav, behav = 'smooth') {
+    setTimeout(() => {
+        document.querySelector(element).scrollIntoView({ behavior: behav });
+        document.querySelectorAll('header ul li').forEach((a) => {
+            a.classList.remove('active');
+        });
+        document.querySelector(nav).classList.add('active');
+        currentPage = element;
+        currentNav = nav;
+        
+    }, 50);
 }
