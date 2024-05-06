@@ -871,14 +871,14 @@ form {
         align-items: center;
         justify-content: center;
         background: radial-gradient(var(--font-color) 15%,
-                #4f4f2f 15%,
-                #4f4f2f 40%,
+                transparent 15%,
+                transparent 40%,
                 var(--font-color) 30%,
                 var(--font-color) 50%,
-                #4f4f2f 50%,
+                transparent 50%,
                 var(--font-color) 50%,
                 var(--font-color) 55%,
-                #202010 50%);
+                transparent 50%);
         height: 40vh;
         width: 40vh;
         border-radius: 100rem;
