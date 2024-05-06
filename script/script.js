@@ -7,12 +7,6 @@ if (window.location.hostname.endsWith('.github.io')) {
         <h1>Under Maintenance</h1>
     </div>`;
 }
-document.querySelector('body').innerHTML = `
-<div class="maintenance">
-    <div>&#x2699
-    </div>
-    <h1>Under Maintenance</h1>
-</div>`;
 
 document.querySelector('.mainStyleSheet').href = 'styles/stable.css';
 // AUDIO CONTROLLERS
