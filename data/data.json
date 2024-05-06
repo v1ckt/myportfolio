@@ -17,10 +17,10 @@
                 "pagecontent":
                     {
                         "presentation": "Here you can see some of the skills I have acquired throughout my career. I am always looking to learn new technologies and improve my skills.",
-                        "presentation2": "If you have any questions or would like to know more about my skills, feel free to contact me.",
+                        "presentation2": "If you have any questions or would like to know more about my skills, you can see more about me on the Contact page.",
                         "languages": ["HTML", "CSS", "JavaScript", "Python", "Dart"],
                         "frameworks": ["Flutter", "Django"],
-                        "tools": ["GitHub", "VS Code", "Figma","Adobe Photoshop", "Adobe Illustrator", "Canva"],
+                        "tools": ["GitHub", "VS Code", "Figma","Photoshop", "Illustrator", "Canva"],
                         "field": "Web Development",
                         "passion": "UI/UX Design",
                         "hobbie": "Graphic Design"
@@ -64,7 +64,34 @@
                         ]
                     }
                 
-            }
+            },
+            "contacts": {
+                "pagetitle" : "Contacts",
+                "pagecontent": 
+                    {
+                        "title": "Contact Me",
+                        "presentation": "If you have any questions or would like to know more about me, feel free to contact me.",
+                        "email": "vicktoremannoel2@gmail.com",
+                        "social": [
+                            {
+                                "name": "GitHub",
+                                "link": "https://github.com/v1ckt",
+                                "icon": "media/icons/GitHub.svg"
+                            },
+                            {
+                                "name": "LinkedIn",
+                                "link": "https://www.linkedin.com/in/txvkt/",
+                                "icon": "media/icons/LinkedIn.svg"
+                            },
+                            {
+                                "name": "Instagram",
+                                "link": "https://www.instagram.com/vicktor_emannoel/",
+                                "icon": "media/icons/Instagram.svg"
+                            }
+                        ]
+                    }
+            },
+            "footer": "© 2021 Vicktor Teixeira. All rights reserved."
         }
     
 }

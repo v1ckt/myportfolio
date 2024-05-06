@@ -3,20 +3,16 @@ var currentNav;
 document.querySelector('.mainStyleSheet').href = 'styles/stable.css';
 
 document.querySelector("#aboutbtn").addEventListener('click', () => {
-    scrollToo('#aboutMe', '#aboutbtn');
-    headerEngine(false);
+    scrollToo('#aboutMe', '#aboutbtn', 'false');
 });
 document.querySelector("#skillsbtn").addEventListener('click', () => {
     scrollToo('#Skills', '#skillsbtn');
-    headerEngine(true);
 });
 document.querySelector("#projectsbtn").addEventListener('click', () => {
     scrollToo('#Projects', '#projectsbtn');
-    headerEngine(true);
 });
 document.querySelector("#contactsbtn").addEventListener('click', () => {
     scrollToo('#Contacts', '#contactsbtn');
-    headerEngine(true);
 });
 
 window.addEventListener('load', () => {

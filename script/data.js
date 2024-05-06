@@ -21,21 +21,13 @@ getData('skills').then(async result => {
     skills.querySelector('.info .hobbie').innerHTML += await result.pagecontent.hobbie;
 
     skills.querySelector('.content').innerHTML += '<h1 style="order: -1;">Skills</h1>';
+    skills.querySelector('.content').innerHTML +=
+        '<spam style="order: 1;">Click in the skill to see more.</spam>';
 
-    const allskills = [].concat(result.pagecontent.tools,
-        result.pagecontent.languages, result.pagecontent.frameworks);
+    const allskills = [].concat(result.pagecontent.languages, result.pagecontent.frameworks,
+        result.pagecontent.tools);
 
-    allskills.sort().forEach(async (skill) => {
-        // const li = document.createElement('li');
-        // const btn = document.createElement('button');
-        // const p = document.createElement('p');
-        // const img = document.createElement('img');
-        // img.style.width = '52px'; img.src = `media/icons/skills/${skill}.svg`;
-        // img.classList.add('glitchText'); p.innerHTML = await skill;
-        // btn.appendChild(img); btn.appendChild(p);
-        // li.appendChild(btn);
-        // skills.querySelector('.toolslist').appendChild(li);
-
+    allskills.forEach(async (skill) => {
         skills.querySelector('.toolslist').innerHTML += `
         <li>
             <button>
@@ -105,4 +97,34 @@ getData('projects').then(async result => {
         li.classList.add('glitch');
 
     });
+});
+
+getData('contacts').then(async result => {
+    contacts.querySelector('.content .presentation .pagetitle').innerHTML = await result.pagecontent.title;
+    contacts.querySelector('.content .presentation .pcontent p').innerHTML = await result.pagecontent.presentation;
+
+    const ul = document.createElement('ul');
+    ul.classList.add('sociallist');
+    contacts.querySelector('.content .presentation .pcontent').appendChild(ul);
+
+    const social = contacts.querySelector('.sociallist');
+    const socials = result.pagecontent.social;
+    socials.forEach(async (item) => {
+        social.innerHTML += `
+        <li>
+            <button href="${item.link}" target="_blank">
+                <img src="${item.icon}">
+            </button>
+        </li>
+        `;
+    });
+});
+
+getData('footer').then(async result => {
+    const footer = document.querySelector('footer');
+    footer.innerHTML += `
+    <div class="footercontent">
+        <p>${await result}</p>
+    </div>
+    `;
 });
