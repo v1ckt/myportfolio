@@ -1,44 +1,44 @@
 var currentPage;
 var currentNav;
-document.querySelector('.mainStyleSheet').href = 'styles/stable.css';
+$('.mainStyleSheet').attr('href', 'styles/stable.css');
 
-document.querySelector("#aboutbtn").addEventListener('click', () => {
+$("#aboutbtn").on('click', () => {
     scrollToo('#aboutMe', '#aboutbtn', 'false');
 });
-document.querySelector("#skillsbtn").addEventListener('click', () => {
+$("#skillsbtn").on('click', () => {
     scrollToo('#Skills', '#skillsbtn');
 });
-document.querySelector("#projectsbtn").addEventListener('click', () => {
+$("#projectsbtn").on('click', () => {
     scrollToo('#Projects', '#projectsbtn');
 });
-document.querySelector("#contactsbtn").addEventListener('click', () => {
+$("#contactsbtn").on('click', () => {
     scrollToo('#Contacts', '#contactsbtn');
 });
 
-window.addEventListener('load', () => {
+$(window).on('load', () => {
     setTimeout(() => {
-        const element = document.querySelector('#aboutMe .content .presentation .pcontent');
-        const presentation = document.querySelector('#aboutMe .presentation');
-        const text = element ? element.textContent : '';
+        const element = $('#aboutMe .content .presentation .pcontent');
+        const presentation = $('#aboutMe .presentation');
+        const text = element ? element.text() : '';
 
-        presentation.innerHTML +=
+        presentation.append(
             `<p>${cutString(text, 'Hello', 'Vicktor')}</p>
             <h1>${cutString(text, "I'm", "Developer")}</h1>
             <p>${cutString(text, 'I recently', 'engineering.')}</p>
             <div class="btns" style="margin-top:20px;">
                 <button class="secondary">See More</button>
                 <button>Download CV</button>
-            </div>`;
+            </div>`);
 
-        document.querySelector('.btns > .secondary').addEventListener('click', () => { document.querySelector("#skillsbtn").click(); });
-        document.querySelector("#aboutbtn").click();
+        $('.btns > .secondary').on('click', () => { $("#skillsbtn").click(); });
+        $("#aboutbtn").click();
     }, 100);
 });
 
-window.addEventListener('resize', async () => {
-        setTimeout(() => {
-            scrollToo(currentPage, currentNav);
-        }, 150);
+$(window).on('resize', async () => {
+    setTimeout(() => {
+        scrollToo(currentPage, currentNav);
+    }, 150);
 });
 
 // Encontra a folha de estilo correta
@@ -49,18 +49,22 @@ randrange = (min, max) => Math.random() * (max - min) + min;
 ['.deco', '.deco.s'].forEach((e) => {
     var rand1, rand2, blur, opacity;
     setInterval(() => {
-        let bgblurElement = document.querySelector('.blurbg');
+        let bgblurElement = $('.blurbg');
         currentvalue = [rand1, rand2];
         rand1 = randrange(-50, 50);
         rand2 = randrange(-50, 50);
         blur = randrange(80, 100);
         opacity = randrange(10, 80);
 
-        document.querySelector(e).style.transition = 'all 5000ms linear';
-        document.querySelector(e).style.transform = `translate(${rand1}vw, ${rand2}vh)`;
-        document.querySelector(e).style.opacity = `${opacity}%`;
-        bgblurElement.style.transition = 'backdrop-filter 5000ms linear';
-        bgblurElement.style.backdropFilter = `blur(${blur.toFixed(0)}px)`;
+        $(e).css({
+            'transition': 'all 5000ms linear',
+            'transform': `translate(${rand1}vw, ${rand2}vh)`,
+            'opacity': `${opacity}%`
+        });
+        bgblurElement.css({
+            'transition': 'backdrop-filter 5000ms linear',
+            'backdrop-filter': `blur(${blur.toFixed(0)}px)`
+        });
 
     }, 5000);
 });

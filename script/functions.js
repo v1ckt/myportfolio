@@ -1,64 +1,65 @@
 // LOAD FROM JSON
 async function getData(...args) {
-    const response = await fetch('data/data.json');
-    const data = await response.json();
-    let result = data['data'];
-    for (const arg of args) {
-        if (result[arg] === undefined) {
-            throw new Error(`Invalid argument: ${arg}`);
+    let result;
+    await $.getJSON('data/data.json', function (data) {
+        result = data['data'];
+        for (const arg of args) {
+            if (result[arg] === undefined) {
+                throw new Error(`Invalid argument: ${arg}`);
+            }
+            result = result[arg];
         }
-        result = result[arg];
-    }
-    return await result;
+    });
+    return result;
 }
 
 // START CORRUPTED
 async function start() {
-    document.querySelector('.mainStyleSheet').href = 'styles/corrupted.css';
-    document.querySelector('.easter').classList.add('hidden');
-    document.querySelector('#aboutMe .pcontent').classList.remove('hidden');
-    document.querySelector('.scriptstable').src = '';
+    $('.mainStyleSheet').attr('href', 'styles/corrupted.css');
+    $('.easter').addClass('hidden');
+    $('#aboutMe .pcontent').removeClass('hidden');
+    $('.scriptstable').attr('src', '');
     await startEasterEgg();
 }
 
 // REVERT FROM CORRUPTED
 async function revert() {
-    document.querySelector('.mainStyleSheet').href = 'styles/stable.css';
-    document.querySelector('.easter').classList.remove('hidden');
-    document.querySelector('#aboutMe .pcontent').classList.add('hidden');
-    document.querySelector('.scriptstable').src = 'stable.js';
-    window.location.reload();
+    $('.mainStyleSheet').attr('href', 'styles/stable.css');
+    $('.easter').removeClass('hidden');
+    $('#aboutMe .pcontent').addClass('hidden');
+    $('.scriptstable').attr('src', 'stable.js');
+    location.reload();
 }
 
 
 // EASTER EGG
 async function startEasterEgg() {
-    const loadElement = document.querySelector('.load');
+    const $loadElement = $('.load');
 
     changeSection('load');
-    document.querySelector('.easter').classList.add('hidden');
+    $('.easter').addClass('hidden');
 
-    loadElement.classList.remove('hidden');
+    $loadElement.removeClass('hidden');
     changeSection('load');
 
     await sleep(1000);
-    loadElement.classList.add('hidden');
+    $loadElement.addClass('hidden');
     changeSection('start');
 
-    const startText = document.querySelector('.start div h1');
-    const loadText = document.querySelector('.start div p');
-    startText.style.display = 'none';
-    loadText.style.display = 'none';
+    const $startText = $('.start div h1');
+    const $loadText = $('.start div p');
+    $startText.hide();
+    $loadText.hide();
 
     await sleep(2000);
-    startText.style.display = 'flex';
-    typeWriter(startText, 150);
+    $startText.show();
+    typeWriter($startText, 150);
 
     await sleep(3000);
-    loadText.style.display = 'flex';
-    typeWriter(loadText, 150);
+    $loadText.show();
+    typeWriter($loadText, 150);
     await sleep(4000);
-    loadText.innerHTML = 'ERROR - CORRUPTED SYSTEM DATA';
+    $loadText.text('ERROR - CORRUPTED SYSTEM DATA');
     easterEgg();
     noiseaudio.play();
     await sleep(1000);
@@ -67,59 +68,62 @@ async function startEasterEgg() {
 }
 
 async function easterEgg() {
-    document.querySelector('.controlpanel #con').innerHTML = `Connection: ${connectionstatus}`;
-    document.querySelector('.controlpanel #sys').innerHTML = `System status: ${sysstatus}`;
+    $('.controlpanel #con').text(`Connection: ${connectionstatus}`);
+    $('.controlpanel #sys').text(`System status: ${sysstatus}`);
 
-    window.addEventListener('focus', function () {
+    $(window).on('focus', function () {
         noiseaudio.play();
     });
-    window.addEventListener('blur', function () {
+    $(window).on('blur', function () {
         noiseaudio.pause();
     });
 
     if (sysstatus == 'corrupted') {
-        document.querySelector('.mainStyleSheet').href = 'styles/corrupted.css';
-        document.querySelector('.easter').classList.add('hidden');
-        document.querySelector('#notifier').classList.remove('hidden');
+        $('.mainStyleSheet').attr('href', 'styles/corrupted.css');
+        $('.easter').addClass('hidden');
+        $('#notifier').removeClass('hidden');
         randomblink(blinkinterval);
         transitpageAnim = true;
         // typeinterval = 50;
 
     } else if (sysstatus == 'stable') {
-        document.querySelector('.easter').classList.remove('hidden');
+        $('.easter').removeClass('hidden');
         noiseaudio.pause();
         changepagesound.volume = 0;
         transitpageAnim = false;
         typeinterval = 0;
 
     } else {
-        document.querySelector('#notifier').classList.add('hidden');
+        $('#notifier').addClass('hidden');
     }
 }
 
 async function randomblink(blinkinterval) {
-    const divs = document.querySelectorAll('section');
+    const $divs = $('section');
     const interval = Math.floor(Math.random() * blinkinterval);
     await sleep(interval > 1000 ? interval : 5000);
-    divs.forEach((div) => { div.style.opacity = '0'; });
-    await sleep(50); divs.forEach((div) => { div.style.opacity = '1'; });
+    $divs.css('opacity', '0');
+    await sleep(50);
+    $divs.css('opacity', '1');
     randomblink(blinkinterval);
 }
 
-function typeWriter(element, interval) {
-    const textArray = element.innerHTML.split(''); element.innerHTML = '';
+function typeWriter($element, interval) {
+    const textArray = $element.text().split('');
+    $element.text('');
     textArray.forEach((letter, i) => {
-        setTimeout(() => element.innerHTML += letter,
+        setTimeout(() => $element.append(letter),
             (typeinterval == 0 ? typeinterval : interval) * i);
     });
 }
 
 function age() {
-    const agetext = document.querySelector('.myage');
-    const birthdate = new Date('2002-12-31'); const today = new Date();
+    const $agetext = $('.myage');
+    const birthdate = new Date('2002-12-31');
+    const today = new Date();
     const age = today.getFullYear() - (birthdate.getFullYear() + 1)
         + Math.floor((today.getMonth() - birthdate.getMonth()) / 12 + 1);
-    agetext.innerHTML = `Age: ${age}`;
+    $agetext.text(`Age: ${age}`);
 }
 
 function sleep(ms) {
@@ -131,85 +135,90 @@ function opencontrolpanel() {
 }
 
 async function transitpage(activeSection) {
+    const $activeSection = $(activeSection);
     if (transitpageAnim == true) {
         changepagesound.play();
-        await sleep(20); activeSection.style.background = 'black';
-        await sleep(20); activeSection.style.background = 'white';
-        await sleep(20); activeSection.style.background = 'transparent';
-    } else { activeSection.style.background = 'transparent'; }
+        await sleep(20); $activeSection.css('background', 'black');
+        await sleep(20); $activeSection.css('background', 'white');
+        await sleep(20); $activeSection.css('background', 'transparent');
+    } else {
+        $activeSection.css('background', 'transparent');
+    }
 }
 
 async function changeSection(name) {
-    const sections = document.querySelectorAll('section');
-    const activeSection = document.querySelector('section.active');
-    const thissection = document.querySelector(`#${name}`);
+    const sections = $('section');
+    const activeSection = $('section.active');
+    const thissection = $(`#${name}`);
     if (activeSection) { await transitpage(activeSection); }
     await sleep(50);
-    sections.forEach((section) => {
-        section.classList.remove('active');
-    });
-    thissection.classList.add('active');
+    thissection.addClass('active');
+    sections.not(thissection).removeClass('active');
 }
 
 function backSection() {
-    const activeSection = document.querySelector('section.active');
-    const sections = document.querySelectorAll('section');
-    const index = Array.from(sections).indexOf(activeSection);
-    if (index > 0) { changeSection(sections[index - 1].id); }
+    const activeSection = $('section.active');
+    const sections = $('section');
+    const index = sections.index(activeSection);
+    if (index > 0) { changeSection(sections.eq(index - 1).attr('id')); }
 }
 
 function goHomePage() { changeSection('homePage'); }
 
-
 // STABLE FUNCTIONS
-function projModal(item, type = 'none') {
+async function projModal(passedName, type = 'none') {
+    const result = await getData('projects');
+    const item = result.pagecontent.items.find((i) => i.name === passedName);
+
     const buttons = `
     <div class="btns">
         <button id="closeModal" class="secondary" onclick="closeModal()">Close</button>
-        <button id="viewProjectbtn">View Project Repo</button>
+        <button id="viewProjectbtn" onclick="openUrl('${item.link}')">View Project Repo</button>
     </div>`;
-    const content = `
-    <div class="modalContent ${type == 'main' ? 'mainWindow' : ''}">
-        <p class="title">${item.name}</p>
-        <div class="caroussel" dir="ltr" onmouseenter="cAutoScroll(this, '.imgbtn', 'hover')">
-            ${item.images.map((img) => `<img src="${img}" id="${img}" alt="${item.name}">`).join('')}
-        </div>
-    <div class="imgbtn">
-    ${item.images.map((i, index) => {
-        let classString = 'item';
-        if (index === 0) {
-            classString += ' active';
-        }
-        return `<div class="${classString}" id="index${i}" onclick="scrollCaroussel('.caroussel', this)"></div>`;
-    }).join('')}
-    </div>
-    <p>${item.description}</p>
-    ${type == 'main' ? buttons : ''}
-</div>`;
 
-    return content;
+    const images = item.images.map((img, index) => `
+    <img src="${img}" id="${img}" alt="${item.name}">
+    <div class=""${index === 0 ? 'item active' : 'item'} id="index${img}" onclick="scrollCaroussel('.caroussel', this)"></div>
+    `).join('');
+
+    const content = `
+    <div class="modalWindow">
+        <div class="modalContent ${type === 'main' ? 'mainWindow' : ''}">
+            <p class="title">${item.name}</p>
+            <div class="caroussel" dir="ltr" onmouseenter="cAutoScroll(this, '.imgbtn', 'hover')">
+                ${images}
+            </div>
+            <div class="imgbtn">
+                ${item.images.map((img, index) => `
+                    <div class="item ${index === 0 ? 'active' : ''}" id="index${img}" onclick="scrollCaroussel('.caroussel', this)"></div>
+                `).join('')}
+            </div>
+            <p>${item.description}</p>
+            ${type === 'main' ? buttons : ''}
+        </div>
+    </div>`;
+    $('body').append(content);
+    $('.mainWindow').css('animation', 'modalWindow 0.2s');
 }
+
 function openUrl(url) {
     window.open(url, '_blank');
 }
 async function closeModal() {
-    document.querySelector('.mainWindow').style.animation = 'none';
+    $('.mainWindow').css('animation', 'none');
     await sleep(1);
-    document.querySelector('.mainWindow').style.animation = 'modalWindow 0.2s reverse';
+    $('.mainWindow').css('animation', 'modalWindow 0.2s reverse');
     await sleep(200);
-    document.querySelector('.modalWindow').remove();
+    $('.modalWindow').remove();
 }
 
 function scrollCaroussel(item, index) {
-    const caroussel = document.querySelector(item);
-    const images = Array.from(caroussel.children);
+    const images = $(item).children().toArray();
     const indexValue = index.id.replace('index', '');
     const img = images.find((img) => img.id === indexValue);
-    caroussel.scrollLeft = img.offsetLeft;
-    document.querySelectorAll('.item').forEach((index) => {
-        index.classList.remove('active');
-    });
-    index.classList.add('active');
+    $(item).scrollLeft(img.offsetLeft);
+    $('.item').removeClass('active');
+    $(index).addClass('active');
 }
 
 function cAutoScroll(caroussel, eclicked, controll) {
@@ -217,14 +226,9 @@ function cAutoScroll(caroussel, eclicked, controll) {
     const ce = caroussel;
 }
 
-async function headerEngine(style) {
-    if (style == true) {
-        document.querySelector('header').classList.add('collapsed');
-        document.querySelector('.sections').classList.add('expanded');
-    } else {
-        document.querySelector('header').classList.remove('collapsed');
-        document.querySelector('.sections').classList.remove('expanded');
-    }
+function headerEngine(style) {
+    style == true ? $('.sections').addClass('expanded') : $('.sections').removeClass('expanded');
+    style == true ? $('header').addClass('collapsed') : $('header').removeClass('collapsed');
 }
 
 function cutString(str, start, end) {
@@ -234,12 +238,19 @@ function cutString(str, start, end) {
 }
 
 async function scrollToo(element, nav, header = true) {
-    await headerEngine(header);
-    document.querySelector(element).scrollIntoView({ behavior: 'smooth' });
-    document.querySelectorAll('header ul li').forEach((a) => {
-        a.classList.remove('active');
-    });
-    document.querySelector(nav).classList.add('active');
+    headerEngine(header);
+    $(element).get(0).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    $('header ul li').removeClass('active');
+    $(nav).addClass('active');
     currentPage = element;
     currentNav = nav;
+}
+
+function cardList(ul, index = 0) {
+    let rotation = 0;
+    const items = ul.find('li');
+    let total = items.length;
+
+    items.not(items.eq(index)).removeClass('active');
+    items.eq(index).addClass('active');
 }
