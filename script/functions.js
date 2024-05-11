@@ -185,7 +185,7 @@ async function projModal(passedName, type = 'none') {
     <div class="modalWindow">
         <div class="modalContent ${type === 'main' ? 'mainWindow' : ''}">
             <p class="title">${item.name}</p>
-            <div class="caroussel" dir="ltr" onmouseenter="cAutoScroll(this, '.imgbtn', 'hover')">
+            <div class="caroussel" dir="ltr">
                 ${images}
             </div>
             <div class="imgbtn">
@@ -199,8 +199,16 @@ async function projModal(passedName, type = 'none') {
     </div>`;
     $('body').append(content);
     $('.mainWindow').css('animation', 'modalWindow 0.2s');
+    $('.caroussel').scroll(function () {
+        scrollPos = $(this).scrollLeft();
+        const images = $(this).children().toArray();
+        const imgWitdh = images[0].offsetWidth;
+        const index = Math.round(scrollPos / imgWitdh);
+        $('.item').removeClass('active');
+        $(`.item:eq(${index})`).addClass('active');
+    });
+    cAutoScroll('.caroussel');
 }
-
 function openUrl(url) {
     window.open(url, '_blank');
 }
@@ -221,9 +229,20 @@ function scrollCaroussel(item, index) {
     $(index).addClass('active');
 }
 
-function cAutoScroll(caroussel, eclicked, controll) {
-    const ec = document.querySelector(eclicked);
-    const ce = caroussel;
+function cAutoScroll(caroussel) {
+    const elements = $(caroussel).children().toArray();
+    const elementsWidth = elements[0].offsetWidth;
+    const elementsCount = elements.length / 2;
+    const maxScroll = ($(caroussel).scrollLeft() / elementsWidth).toFixed(0);
+
+    setTimeout(function () {
+        if (maxScroll < elementsCount - 1) {
+            $(caroussel).scrollLeft($(caroussel).scrollLeft() + elementsWidth);
+        } else {
+            $(caroussel).scrollLeft(0);
+        }
+        cAutoScroll(caroussel);
+    }, 3000);
 }
 
 function headerEngine(style) {
@@ -244,13 +263,4 @@ async function scrollToo(element, nav, header = true) {
     $(nav).addClass('active');
     currentPage = element;
     currentNav = nav;
-}
-
-function cardList(ul, index = 0) {
-    let rotation = 0;
-    const items = ul.find('li');
-    let total = items.length;
-
-    items.not(items.eq(index)).removeClass('active');
-    items.eq(index).addClass('active');
 }

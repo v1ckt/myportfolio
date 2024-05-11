@@ -62,7 +62,6 @@ getData('projects').then(async result => {
             </div>
         </li>`);
     });
-    cardList(projects.find('.projectslist'));
 });
 
 getData('contacts').then(async result => {

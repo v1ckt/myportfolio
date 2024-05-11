@@ -463,9 +463,9 @@ textarea {
             display: flex;
             flex-direction: row;
             align-items: center;
-            gap: 1rem;
+            gap: .5rem;
             padding: .5rem;
-            overflow: hidden;
+            overflow: auto;
 
             img {
                 scroll-snap-align: center;
@@ -631,7 +631,6 @@ textarea {
             }
 
             .projectslist {
-                position: relative;
                 display: flex;
                 justify-content: start;
                 gap: 1rem;
@@ -639,15 +638,19 @@ textarea {
                 overflow: visible;
                 width: 17rem;
                 padding: 1rem;
-
+                position: relative;
+                width: 20rem;
+                height: 20rem;
+                scroll-snap-type: x mandatory;
+                
                 p {
                     font-size: .9rem;
                 }
-
+                
                 h4 {
                     font-size: 1rem;
                 }
-
+                
                 li {
                     cursor: default;
                     display: flex;
@@ -660,7 +663,7 @@ textarea {
                     background-color: var(--card-color);
                     border-radius: var(--border-radius-5);
                     transition: var(--transition);
-                    position: relative;
+                    scroll-snap-align: center;
 
                     img {
                         width: 14rem;
