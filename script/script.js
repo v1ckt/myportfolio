@@ -1,12 +1,12 @@
 // COMING SOON PAGE FUNCTION
-if (!window.location.hostname.startsWith('localhost') && !/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(window.location.hostname)) {
-    $('body').html(`
-    <div class="maintenance">
-        <div>&#x2699
-        </div>
-        <h1>Under Maintenance</h1>
-    </div>`);
-}
+// if (!window.location.hostname.startsWith('localhost') && !/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(window.location.hostname)) {
+//     $('body').html(`
+//     <div class="maintenance">
+//         <div>&#x2699
+//         </div>
+//         <h1>Under Maintenance</h1>
+//     </div>`);
+// }
 
 $('.mainStyleSheet').attr('href', 'styles/stable.css');
 
