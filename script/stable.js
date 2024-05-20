@@ -23,7 +23,7 @@ $(window).on('load', () => {
 
         presentation.append(
             `<p>${cutString(text, 'Hello', 'Vicktor')}</p>
-            <h1>${cutString(text, "I'm", "Developer")}</h1>
+            <h1><i>${cutString(text, "I'm", "Developer")}</i></h1>
             <p>${cutString(text, 'I recently', 'engineering.')}</p>
             <div class="btns" style="margin-top:20px;">
                 <button class="secondary">See More</button>

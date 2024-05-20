@@ -209,9 +209,11 @@ async function projModal(passedName, type = 'none') {
     });
     cAutoScroll('.caroussel', '.imgbtn');
 }
+
 function openUrl(url) {
     return window.open(url, '_blank');
 }
+
 async function closeModal() {
     $('.mainWindow').css('animation', 'none');
     await sleep(1);

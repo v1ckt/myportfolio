@@ -197,10 +197,11 @@ header {
         border-radius: .6rem;
         background-color: var(--header-color);
         filter: brightness(1) contrast(0.95);
-        border: 1px solid rgba(100,100,100,.1);
+        border: 1px solid rgba(100, 100, 100, .1);
 
         .headerleft {
             transform: translate(-.4rem, 0);
+
             img {
                 width: 2.2rem;
             }
@@ -942,5 +943,43 @@ form {
         padding-top: .45rem;
         font-size: 50vh;
         margin: 0;
+    }
+}
+
+.betainfoi {
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    transition: var(--transition);
+    width: 40vw;
+    padding: 1rem;
+    margin-left: 10rem;
+    border: 1px solid var(--border-color);
+
+    z-index: 9998;
+}
+
+.betainfo {
+    padding: 0.5rem;
+    background-color: var(--header-color);
+    filter: contrast(.9) saturate(2);
+    font-weight: 600;
+    border-radius: 100rem;
+    padding: 0.5rem 1rem;
+    font-size: .8rem;
+    z-index: 9999;
+    transition: all 0.2s ease;
+    position: relative;
+
+    &:hover {
+        filter: contrast(.8) saturate(2);
+    }
+
+    &:hover+.betainfoi {
+        visibility: visible;
+        margin-top: 8rem;
+        border-radius: var(--border-radius-5);
+        background: var(--card-color);
+        opacity: 1;
     }
 }
