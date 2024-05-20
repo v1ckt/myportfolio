@@ -31,7 +31,9 @@
                 "pagecontent": 
                     {
                         "title": "Featured Projects",
-                        "presentation": "Here you can see some of the projects I have worked on. They're simple but they show my skills and my passion for Web Development and UI/UX Design.",
+                        "presentation": "Those are some of the projects I've been working on. They're simple but they show my skills and my passion for Web Development and UI/UX Design.",
+                        "presentation2": "I started my journey by learning the basics of HTML, CSS, and JavaScript. These fundamental languages allowed me to create static web pages and understand the structure of the web.",
+                        "presentation3": "I also plan to explore front-end frameworks and libraries (Vue, Tailwind, React) and dive deeper into back-end development (Node.js, Python).",
                         "items": [
                         {
                             "name": "Boate Azul",

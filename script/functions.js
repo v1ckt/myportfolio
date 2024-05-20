@@ -207,10 +207,10 @@ async function projModal(passedName, type = 'none') {
         $('.item').removeClass('active');
         $(`.item:eq(${index})`).addClass('active');
     });
-    cAutoScroll('.caroussel');
+    cAutoScroll('.caroussel', '.imgbtn');
 }
 function openUrl(url) {
-    window.open(url, '_blank');
+    return window.open(url, '_blank');
 }
 async function closeModal() {
     $('.mainWindow').css('animation', 'none');
@@ -229,7 +229,7 @@ function scrollCaroussel(item, index) {
     $(index).addClass('active');
 }
 
-function cAutoScroll(caroussel) {
+function cAutoScroll(caroussel, timedisplay = '') {
     const elements = $(caroussel).children().toArray();
     const elementsWidth = elements[0].offsetWidth;
     const elementsCount = elements.length / 2;
@@ -241,7 +241,7 @@ function cAutoScroll(caroussel) {
         } else {
             $(caroussel).scrollLeft(0);
         }
-        cAutoScroll(caroussel);
+        cAutoScroll(caroussel, timedisplay);
     }, 3000);
 }
 
@@ -258,8 +258,9 @@ function cutString(str, start, end) {
 
 async function scrollToo(element, nav, header = true) {
     headerEngine(header);
-    $(element).get(0).scrollIntoView({ behavior: 'smooth', block: 'start' });
     $('header ul li').removeClass('active');
+    await sleep(110);
+    $(element).get(0).scrollIntoView({ behavior: 'smooth', block: 'start' });
     $(nav).addClass('active');
     currentPage = element;
     currentNav = nav;

@@ -21,7 +21,7 @@ getData('skills').then(async result => {
     skills.find('.info .hobbie').append(await result.pagecontent.hobbie);
 
     skills.find('.content').append('<h1 style="order: -1;">Skills</h1>');
-    skills.find('.content').append('<spam style="order: 1;">Click in the skill to see more.</spam>');
+    // skills.find('.content').append('<spam style="order: 1;">Click in the skill to see more.</spam>');
 
     const allskills = [].concat(result.pagecontent.languages, result.pagecontent.frameworks,
         result.pagecontent.tools);
@@ -47,6 +47,9 @@ getData('projects').then(async result => {
     projects.find('.content .presentation .ptitle').append(await result.pagecontent.title);
     projects.find('.content .presentation .pcontent').append(await result.pagecontent.presentation);
     const items = result.pagecontent.items;
+
+    projects.find('.content .presentation').append('<h1 style="order: -1;">Projects</h1>');
+
     items.forEach(async (item) => {
         const ul = projects.find('.projectslist');
         ul.append(`
@@ -62,6 +65,10 @@ getData('projects').then(async result => {
             </div>
         </li>`);
     });
+
+    const presentation2 = $('<p></p>').append(await result.pagecontent.presentation2);
+    const presentation3 = $('<p></p>').append(await result.pagecontent.presentation3);
+    projects.find('.content .presentation').append(presentation2, presentation3);
 });
 
 getData('contacts').then(async result => {
@@ -75,16 +82,22 @@ getData('contacts').then(async result => {
     socials.forEach(async (item) => {
         $('.sociallist').append(`
         <li>
-            <button href="${item.link}" target="_blank">
-                <img src="${item.icon}">
+            <button>
+                <img src="${item.icon}" style="width:24px;margin: 0 auto;">
             </button>
         </li>`);
+    });
+
+    $('.sociallist button').on('click', (e) => {
+        const target = e.currentTarget;
+        const index = $('.sociallist button').index(target);
+        openUrl(socials[index].link);
     });
 });
 
 getData('footer').then(async result => {
     $('footer').html(`
     <div class="footercontent">
-        <p>${await result}</p>
+        <p>${result}</p>
     </div>`);
 });

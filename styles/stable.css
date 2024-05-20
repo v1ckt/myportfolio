@@ -185,17 +185,24 @@ header {
     width: 100vw;
     height: 20vh;
     transition: var(--transition);
+    border: 1px solid transparent;
     color: var(--font-color);
     background-color: transparent;
 
     &.collapsed {
-        padding: 0 10rem;
+        padding: 0 1.5rem;
         height: 10vh;
+        width: 85vw;
+        margin: 1vh 7.5vw 0 7.5vw;
+        border-radius: .6rem;
         background-color: var(--header-color);
+        filter: brightness(1) contrast(0.95);
+        border: 1px solid rgba(100,100,100,.1);
 
         .headerleft {
+            transform: translate(-.4rem, 0);
             img {
-                width: 2.5rem;
+                width: 2.2rem;
             }
         }
 
@@ -576,36 +583,40 @@ textarea {
             overflow: auto;
             margin: 3rem 0;
 
-            li>button {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: space-around;
-                aspect-ratio: 1/1;
-                height: 7rem;
-                padding: .5rem;
-                border: 1px solid var(--border-color);
-                background: var(--card-color);
-
-                p {
-                    font-weight: 400;
-                    transition: var(--transition);
-                    font-size: .9rem;
-                }
-
-                .skillimg {
-                    width: 2.8rem;
-                    aspect-ratio: 1/1;
+            li {
+                button {
                     display: flex;
+                    flex-direction: column;
                     align-items: center;
-                    justify-content: center;
-                    overflow: hidden;
+                    justify-content: space-around;
+                    aspect-ratio: 1/1;
+                    height: 7rem;
+                    padding: .5rem;
+                    border: 1px solid var(--border-color);
+                    background: var(--card-color);
+
+                    p {
+                        font-weight: 400;
+                        transition: var(--transition);
+                        font-size: .9rem;
+                    }
+
+                    .skillimg {
+                        width: 2.8rem;
+                        aspect-ratio: 1/1;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        overflow: hidden;
+                    }
                 }
 
                 &:hover {
-                    color: var(--font-color);
-                    transform: scale(1.05);
-                    background: var(--card-hover);
+                    button {
+                        color: var(--font-color);
+                        transform: scale(1.05);
+                        background: var(--card-hover);
+                    }
                 }
             }
         }
@@ -620,14 +631,18 @@ textarea {
         .content {
             display: flex;
             flex-direction: row-reverse;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
             gap: 4rem;
             width: 100%;
             height: 100%;
 
             .presentation {
+                margin-top: 4vh;
+                display: flex;
+                flex-direction: column;
                 width: 40vw;
+                gap: 1rem;
             }
 
             .projectslist {
@@ -635,22 +650,22 @@ textarea {
                 justify-content: start;
                 gap: 1rem;
                 text-align: left;
-                overflow: visible;
-                width: 17rem;
+                overflow: auto;
                 padding: 1rem;
                 position: relative;
-                width: 20rem;
+                width: 25rem;
                 height: 20rem;
                 scroll-snap-type: x mandatory;
-                
+                align-self: center;
+
                 p {
                     font-size: .9rem;
                 }
-                
+
                 h4 {
                     font-size: 1rem;
                 }
-                
+
                 li {
                     cursor: default;
                     display: flex;
@@ -851,7 +866,7 @@ footer {
 
         &.s {
             background: var(--s-color);
-            filter: saturate(.8) brightness(.9);
+            filter: saturate(.8) brightness(1);
         }
     }
 }
