@@ -8,6 +8,16 @@
 //     </div>`);
 // }
 
+// mobile page maintenance screen
+if (window.innerWidth < 768) {
+    $('body').html(`
+    <div class="maintenance">
+        <div>&#x2699
+        </div>
+        <h1>Under Maintenance</h1>
+    </div>`);
+}
+
 $('.mainStyleSheet').attr('href', 'styles/stable.css');
 
 // AUDIO CONTROLLERS
