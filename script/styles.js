@@ -26,7 +26,7 @@ function uCS() {
     const colors = Object.keys(colorSchemes);
     const rand = Math.floor(Math.random() * colors.length);
     const color = colors[rand];
-    
+
     themeApply(color);
 }
 

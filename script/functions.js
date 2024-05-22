@@ -233,6 +233,10 @@ function scrollCaroussel(item, index) {
 
 function cAutoScroll(caroussel, timedisplay = '') {
     const elements = $(caroussel).children().toArray();
+    if (elements.length === 0) {
+        console.error('No elements found for:', caroussel);
+        return;
+    }
     const elementsWidth = elements[0].offsetWidth;
     const elementsCount = elements.length / 2;
     const maxScroll = ($(caroussel).scrollLeft() / elementsWidth).toFixed(0);
@@ -266,4 +270,14 @@ async function scrollToo(element, nav, header = true) {
     $(nav).addClass('active');
     currentPage = element;
     currentNav = nav;
+}
+
+function scrollSlide(caroussel, direction = 1) {
+    const element = $(caroussel)[0];
+    const newScrollPosition = direction === 1 ? element.scrollLeft + element.offsetWidth :
+        element.scrollLeft - element.offsetWidth;
+    element.scrollTo({
+        left: newScrollPosition,
+        behavior: 'smooth'
+    });
 }

@@ -244,6 +244,7 @@ section {
     text-align: center;
     align-items: center;
     gap: 1rem;
+
     >.projectslist {
         text-align: left;
         display: flex;
@@ -251,6 +252,7 @@ section {
         align-items: stretch;
         gap: 0 1rem;
         flex-wrap: wrap;
+
         li {
             display: flex;
             flex-direction: column;
@@ -262,22 +264,34 @@ section {
             width: 15rem;
             height: 18rem;
             gap: 1rem;
+
             p {
                 font-size: 1rem;
                 text-align: left;
-                &:hover&::before {content: '';}
+
+                &:hover&::before {
+                    content: '';
+                }
             }
+
             p:last-child {
                 display: none;
                 text-align: center;
             }
+
             &:hover {
                 align-items: center;
+
                 p:last-child {
                     display: flex;
                 }
+
                 justify-content: center;
-                h4, p {display: none;}
+
+                h4,
+                p {
+                    display: none;
+                }
             }
         }
     }

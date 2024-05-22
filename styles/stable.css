@@ -646,15 +646,40 @@ textarea {
                 gap: 1rem;
             }
 
+            .carousselbox {
+                position: relative;
+                display: flex;
+                flex-direction: row;
+                width: fit-content;
+                height: fit-content;
+                align-self: center;
+
+                #nextbtn,
+                #prevbtn {
+                    height: max-content;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+
+                #prevbtn {
+                    left: -3rem;
+                }
+
+                #nextbtn {
+                    right: -3rem;
+                }
+            }
+
             .projectslist {
                 display: flex;
                 justify-content: start;
                 gap: 1rem;
                 text-align: left;
                 overflow: auto;
-                padding: 1rem;
+                padding: 1rem 0;
                 position: relative;
-                width: 25rem;
+                width: 20rem;
                 height: 20rem;
                 scroll-snap-type: x mandatory;
                 align-self: center;
@@ -950,13 +975,11 @@ form {
     position: fixed;
     visibility: hidden;
     opacity: 0;
-    transition: var(--transition);
+    transition: all 150ms;
     width: 40vw;
-    padding: 1rem;
+    padding: .5rem .6rem;
     margin-left: 10rem;
     border: 1px solid var(--border-color);
-
-    z-index: 9998;
 }
 
 .betainfo {
@@ -979,7 +1002,9 @@ form {
         visibility: visible;
         margin-top: 8rem;
         border-radius: var(--border-radius-5);
-        background: var(--card-color);
+        background: hsl(var(--accent-hue), 40%, 8%);
+        filter: brightness(1.2) saturate(.8);
         opacity: 1;
+        z-index: 9998;
     }
 }

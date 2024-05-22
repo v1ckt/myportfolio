@@ -50,8 +50,8 @@ getData('projects').then(async result => {
 
     projects.find('.content .presentation').append('<h1 style="order: -1;">Projects</h1>');
 
+    var ul = $('<ul></ul>').addClass('projectslist').attr('dir', 'ltr');
     items.forEach(async (item) => {
-        const ul = projects.find('.projectslist');
         ul.append(`
         <li class="glitch">
             <img src="${item.images[0]}">
@@ -69,6 +69,12 @@ getData('projects').then(async result => {
     const presentation2 = $('<p></p>').append(await result.pagecontent.presentation2);
     const presentation3 = $('<p></p>').append(await result.pagecontent.presentation3);
     projects.find('.content .presentation').append(presentation2, presentation3);
+
+    const prevbtn = `<button id="prevbtn" class="secondary" onclick="scrollSlide('.projectslist', 0)"><</button>`;
+    const nextbtn = `<button id="nextbtn" class="secondary" onclick="scrollSlide('.projectslist', 1)">></button>`;
+    const car = nextbtn + ul.prop('outerHTML') + prevbtn;
+
+    projects.find('.content').append(`<div class="carousselbox">${car}</div>`);
 });
 
 getData('contacts').then(async result => {
