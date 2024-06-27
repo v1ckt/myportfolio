@@ -36,6 +36,13 @@
                         "presentation3": "I also plan to explore front-end frameworks and libraries (Vue, Tailwind, React) and dive deeper into back-end development (Node.js, Python).",
                         "items": [
                         {
+                            "name": "To Do List",
+                            "description": "To Do List made with React Js.",
+                            "technologies": ["React", "HTML", "CSS"],
+                            "link": "https://github.com/v1ckt/todo",
+                            "images": ["media/images/projects/todo1.png", "media/images/projects/todo2.png", "media/images/projects/todo3.png"]
+                        },
+                        {
                             "name": "Boate Azul",
                             "description": "A simple website for a fictional nightclub.",
                             "technologies": ["PHP", "Laravel"],

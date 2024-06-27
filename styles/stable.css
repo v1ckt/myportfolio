@@ -502,6 +502,7 @@ textarea {
 #Skills,
 #Projects,
 #Contacts {
+    padding-top: 5vh;
 
     p {
         font-size: 1.2rem;
@@ -679,7 +680,7 @@ textarea {
                 overflow: auto;
                 padding: 1rem 0;
                 position: relative;
-                width: 20rem;
+                width: 25rem;
                 height: 20rem;
                 scroll-snap-type: x mandatory;
                 align-self: center;

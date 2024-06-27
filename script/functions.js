@@ -274,8 +274,8 @@ async function scrollToo(element, nav, header = true) {
 
 function scrollSlide(caroussel, direction = 1) {
     const element = $(caroussel)[0];
-    const newScrollPosition = direction === 1 ? element.scrollLeft + element.offsetWidth :
-        element.scrollLeft - element.offsetWidth;
+    const newScrollPosition = direction === 1 ? element.scrollLeft + (element.offsetWidth - 100) :
+        element.scrollLeft - (element.offsetWidth - 100);
     element.scrollTo({
         left: newScrollPosition,
         behavior: 'smooth'
