@@ -193,7 +193,7 @@ header {
         padding: 0 1.5rem;
         height: 10vh;
         width: 85vw;
-        margin: 1vh 7.5vw 0 7.5vw;
+        margin: 2vh 7.5vw 0 7.5vw;
         border-radius: .6rem;
         background-color: var(--header-color);
         filter: brightness(1) contrast(0.95);
