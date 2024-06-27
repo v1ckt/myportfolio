@@ -9,7 +9,7 @@
 // }
 
 // mobile page maintenance screen
-if (window.innerWidth < 768) {
+if (window.innerWidth <= 768) {
     $('body').html(`
     <div class="maintenance">
         <div>&#x2699
