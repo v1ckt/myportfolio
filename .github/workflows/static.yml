@@ -30,12 +30,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-        run: echo "/* http://v1ckt.github.io 301" > _redirects
+      - uses: actions/checkout@v4
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+      - run: echo "/old-page http://new-domain.com/new-page 301" > _redirects
+      - uses: actions/configure-pages@v5
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
           path: '.'
