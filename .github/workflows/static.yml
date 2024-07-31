@@ -2,7 +2,7 @@ name: Generate and Deploy Redirects
 
 on:
   push:
-    branches: [ main ]
+    branches: [ second ]
 
 jobs:
   build:
