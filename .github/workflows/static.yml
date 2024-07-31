@@ -30,12 +30,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-      - uses: actions/checkout@v4
-      - name: Setup Pages
-      - run: echo "/old-page http://new-domain.com/new-page 301" > _redirects
-      - uses: actions/configure-pages@v5
-      - name: Upload artifact
-      - uses: actions/upload-pages-artifact@v3
+        uses: actions/checkout@v4
+      - name: Generate redirects file
+        run:  echo "/old-page http://new-domain.com/new-page 301" > _redirects  # Add a custom script
+      - name: Continue
         with:
           # Upload entire repository
           path: '.'
